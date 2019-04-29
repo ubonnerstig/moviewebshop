@@ -32,4 +32,10 @@ describe('HomeComponent', () => {
 		expect(component.movies.length).toBe(4);
 	});
 
+	it('should toggle modal visability', () => {
+		expect(component.modalVisability).toBeFalsy();
+		component.toggleModal();
+		expect(component.modalVisability).toBeTruthy();
+	});
+
 });

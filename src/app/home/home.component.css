@@ -1,0 +1,12 @@
+div.flex {
+	margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	max-width: 60rem;
+}
+
+app-print-movie.col {
+	flex: 0 0 25%;
+	max-width: 25%;
+}

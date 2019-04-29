@@ -9,12 +9,23 @@ import { DataService } from '../services/data.service';
 })
 export class HomeComponent implements OnInit {
 	movies: IMovie[];
+	modalVisability: boolean;
 
 	constructor(dataService: DataService) {
 		dataService.getData().subscribe(movies => this.movies = movies);
 	 }
 
 	ngOnInit() {
+	}
+
+	toggleModal(){
+		this.modalVisability = !this.modalVisability;
+
+		if(this.modalVisability){
+
+		}else{
+			
+		}
 	}
 
 }
