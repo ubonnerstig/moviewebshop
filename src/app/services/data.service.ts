@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class DataService implements IDataService {
 	movies: IMovie[]
 
-	constructor(private httpClient: HttpClient, service: DataService) { }
+	constructor(private httpClient: HttpClient) { }
 
 	getData(): Observable<IMovie[]>{
 		return this.httpClient.get<IMovie[]>('https://medieinstitutet-wie-products.azurewebsites.net/api/products');

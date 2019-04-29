@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { IMovie } from '../interfaces/IMovie';
 
 @Component({
   selector: 'app-print-movie',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./print-movie.component.css']
 })
 export class PrintMovieComponent implements OnInit {
+	@Input() movie: IMovie;
+	
+	constructor() { }
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+	ngOnInit() {
+	}
 
 }
