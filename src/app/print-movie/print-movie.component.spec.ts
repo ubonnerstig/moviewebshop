@@ -34,9 +34,9 @@ describe('PrintMovieComponent', () => {
 	it('should set value to inputdecorator', () => {
 		//testComponent.setInput({id: 1, name: 'Batcat the cat bat', description: 'lol', price: 122,imageUrl: 'https://fashionjitsudotcom.files.wordpress.com/2017/10/screen-shot-2017-09-25-at-2-52-46-pm.png',year: 1999,added: 'datum',productCategory:[]});
 		//testFixture.detectChanges();
-	// 	expect(testFixture.nativeElement.querySelector('p').innerText).toEqual('Batcat the cat bat');
-	// 	expect(testFixture.nativeElement.querySelector('div').innerHTML).toEqual(`<img _ngcontent-a-c10="" src="https://fashionjitsudotcom.files.wordpress.com/2017/10/screen-shot-2017-09-25-at-2-52-46-pm.png"><p _ngcontent-a-c10="" class="title"> Batcat the cat bat </p>`);
-		});
+	 	expect(testFixture.nativeElement.querySelector('p').innerText).toEqual('Batcat the cat bat');
+	 	expect(testFixture.nativeElement.querySelector('div').innerHTML).toEqual(`<img _ngcontent-a-c10="" src="https://fashionjitsudotcom.files.wordpress.com/2017/10/screen-shot-2017-09-25-at-2-52-46-pm.png"><p _ngcontent-a-c10="" class="title"> Batcat the cat bat </p>`);
+	});
 
 	@Component({
 		selector: `host-component`,
