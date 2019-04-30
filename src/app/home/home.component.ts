@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
 
 	constructor(dataService: DataService) {
 		dataService.getData().subscribe(movies => this.movies = movies);
-	 }
+	}
 
 	ngOnInit() {
 	}

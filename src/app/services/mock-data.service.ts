@@ -14,7 +14,7 @@ export class MockDataService implements IDataService {
 			name: "One",
 			description: "Description One",
 			price: 199,
-			imageUrl: "cool image",
+			imageUrl: "https://fashionjitsudotcom.files.wordpress.com/2017/10/screen-shot-2017-09-25-at-2-52-46-pm.png",
 			year: 1999,
 			added: "datum",
 			productCategory:[]
@@ -24,7 +24,7 @@ export class MockDataService implements IDataService {
 			name: "Two",
 			description: "Description One",
 			price: 199,
-			imageUrl: "cool image",
+			imageUrl: "https://fashionjitsudotcom.files.wordpress.com/2017/10/screen-shot-2017-09-25-at-2-52-46-pm.png",
 			year: 1999,
 			added: "datum",
 			productCategory:[]
@@ -34,7 +34,7 @@ export class MockDataService implements IDataService {
 			name: "Three",
 			description: "Description One",
 			price: 199,
-			imageUrl: "cool image",
+			imageUrl: "https://fashionjitsudotcom.files.wordpress.com/2017/10/screen-shot-2017-09-25-at-2-52-46-pm.png",
 			year: 1999,
 			added: "datum",
 			productCategory:[]
@@ -44,7 +44,7 @@ export class MockDataService implements IDataService {
 			name: "Four",
 			description: "Description One",
 			price: 199,
-			imageUrl: "cool image",
+			imageUrl: "https://fashionjitsudotcom.files.wordpress.com/2017/10/screen-shot-2017-09-25-at-2-52-46-pm.png",
 			year: 1999,
 			added: "datum",
 			productCategory:[]
