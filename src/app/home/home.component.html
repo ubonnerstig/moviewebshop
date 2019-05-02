@@ -1,5 +1,6 @@
 <div class="flex">
-	<app-print-movie class="col" *ngFor="let movie of movies" [movie]="movie"></app-print-movie>
+	<app-print-movie class="col" *ngFor="let movie of movies" [movie]="movie" (thisMovieInfo)="movieInfo($event)"></app-print-movie>
 </div>
 
-<!-- Styr om klassen används eller inte -->
+
+<app-movie-details [class.display_modal]="modalVisability" [modalMovie]="modalMovie" (click)="toggleModal()"></app-movie-details>

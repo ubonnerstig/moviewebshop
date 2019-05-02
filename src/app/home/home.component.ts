@@ -9,10 +9,14 @@ import { DataService } from '../services/data.service';
 })
 export class HomeComponent implements OnInit {
 	movies: IMovie[];
-	modalVisability: boolean;
+	modalVisability: boolean = true;
+	modalMovie: IMovie;
 
 	constructor(dataService: DataService) {
-		dataService.getData().subscribe(movies => this.movies = movies);
+		dataService.getData().subscribe(movies =>  {
+			this.movies = movies;
+			this.modalMovie = this.movies[0];
+		});
 	}
 
 	ngOnInit() {
@@ -26,6 +30,11 @@ export class HomeComponent implements OnInit {
 		}else{
 			
 		}
+	}
+
+	movieInfo(movie: IMovie){
+		this.toggleModal();
+		this.modalMovie = movie;
 	}
 
 }

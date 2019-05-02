@@ -10,3 +10,16 @@ app-print-movie.col {
 	flex: 0 0 25%;
 	max-width: 25%;
 }
+app-movie-details {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(22, 22, 22, 0.3);
+	z-index: 500;
+}
+
+app-movie-details.display_modal {
+	display: none;
+}

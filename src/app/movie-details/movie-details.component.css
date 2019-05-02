@@ -1,0 +1,9 @@
+.modal_content {
+	width: 40rem;
+	background-color: #ffffff;
+	position: absolute;
+	margin: 25% 50%;
+	left: -20rem;
+	z-index: 500;
+
+}
