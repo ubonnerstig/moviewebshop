@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { IMovie } from '../interfaces/IMovie';
 import { DataService } from '../services/data.service';
+import { BodyScrollService } from '../services/body-scroll.service';
 
 @Component({
 	selector: 'app-home',
@@ -8,13 +9,14 @@ import { DataService } from '../services/data.service';
 	styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-	@Output() bodyScrollEmit = new EventEmitter<boolean>();
 
 	movies: IMovie[];
 	modalVisability: boolean = true;
 	modalMovie: IMovie;
 
-	constructor(dataService: DataService) {
+	bodyScroll: boolean;
+
+	constructor(dataService: DataService, private scrollService: BodyScrollService) {
 		dataService.getData().subscribe(movies =>  {
 			this.movies = movies;
 			this.modalMovie = this.movies[0];
@@ -28,11 +30,11 @@ export class HomeComponent implements OnInit {
 		this.modalVisability = !this.modalVisability;
 
 		if(this.modalVisability){
-			console.log(this.modalVisability);
-			this.bodyScrollEmit.emit(false);
+			this.bodyScroll = false;
+			this.scrollService.toggleScroll(this.bodyScroll);
 		}else{
-			console.log(this.modalVisability);
-			this.bodyScrollEmit.emit(true);
+			this.bodyScroll = true;
+			this.scrollService.toggleScroll(this.bodyScroll);
 		}
 	}
 

@@ -20,12 +20,11 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should toggle body scroll', () => {
+  it('bodyScroll should be falsy on load', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
 	expect(app.bodyScroll).toBeFalsy();
-	app.toggleScroll(true);
-	expect(app.bodyScroll).toBeTruthy();
+
   });
 
 //   it(`should have as title 'moviewebshop'`, () => {

@@ -35,8 +35,10 @@ describe('HomeComponent', () => {
 
 	it('should toggle modal visability', () => {
 		expect(component.modalVisability).toBeTruthy();
+		expect(component.bodyScroll).toBeFalsy();
 		component.toggleModal();
 		expect(component.modalVisability).toBeFalsy();
+		expect(component.bodyScroll).toBeTruthy();
 	});
 
 	it('should recieve movie from child', () => {

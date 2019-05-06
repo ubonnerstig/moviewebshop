@@ -1,9 +1,18 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+ 	providedIn: 'root'
 })
 export class BodyScrollService {
 
-  constructor() { }
+	private bodyScrollSource = new Subject<boolean>();
+
+	toggleScroll$ = this.bodyScrollSource.asObservable();
+
+	toggleScroll(scroll: boolean) {
+		this.bodyScrollSource.next(scroll);
+	}
+	
+  	constructor() { }
 }

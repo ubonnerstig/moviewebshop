@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BodyScrollService } from './services/body-scroll.service';
 
 @Component({
   selector: 'app-root, body',
@@ -11,8 +12,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
 	bodyScroll: boolean;
 
-	toggleScroll(toggleOnOff:boolean){
-		console.log("app comopnent" , toggleOnOff);
-		this.bodyScroll = toggleOnOff;
+	constructor(scrollService: BodyScrollService) {
+		scrollService.toggleScroll$.subscribe(
+			bodyScroll => {
+				this.bodyScroll = bodyScroll;
+		});
 	}
 }
