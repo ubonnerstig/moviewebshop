@@ -3,4 +3,5 @@
 </div>
 
 
-<app-movie-details [class.display_modal]="modalVisability" [modalMovie]="modalMovie" (click)="toggleModal()"></app-movie-details>
+<app-movie-details [class.display_modal]="modalVisability" [modalMovie]="modalMovie" (closeThisModal)="toggleModal($event)">
+</app-movie-details> 

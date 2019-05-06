@@ -1,6 +1,12 @@
 <div class="img_container" (click)='getMovieInfo()'>
+
 	<img src='{{movie.imageUrl}}' />
-	<p class="title">
-		{{ movie.name }}
-	</p>
+
+	<div class="title_container">
+		<p class="title">
+			{{ movie.name }}
+		</p>
+		<button>Quick add</button>
+	</div>
+
 </div>

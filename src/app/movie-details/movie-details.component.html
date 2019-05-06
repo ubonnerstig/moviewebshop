@@ -1,8 +1,15 @@
+<div class="modal_background" (click)="closeModal()"></div>
 <div class="modal_content">
-	<!-- <p>
-		{{modalMovie.name}}
-	</p>
-	<p>
-		{{modalMovie.description}}
-	</p> -->
+	<div class="close" (click)="closeModal()"><i class="fas fa-times"></i></div>
+	<div class="modal_img_container">
+		<img src='{{ modalMovie.imageUrl }}' />
+	</div>
+	<div class="col">
+		<h3>
+			{{modalMovie.name}} | {{modalMovie.year}}
+		</h3>
+		<p>
+			{{modalMovie.description}}
+		</p>
+	</div>
 </div>

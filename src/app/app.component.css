@@ -1,0 +1,17 @@
+header {
+	padding-top: 2rem; 
+}
+
+h1 {
+	text-align: center;
+	/* font-family: 'Plaster', cursive; */
+	font-family: 'Pacifico', cursive;
+	font-size: 4rem;
+	color: #ffffff;
+	margin:0;
+	text-shadow: 0 0 10px #ffffff, 0 0 20px #cb9be7, 0 0 30px #a220ee, 0 0 40px #a220ee, 0 0 50px #a220ee, 0 0 60px #a220ee, 0 0 70px #a220ee;
+}
+
+/* ::ng-deep .no_scroll {
+	overflow: hidden;
+} */

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { IMovie } from '../interfaces/IMovie';
 import { DataService } from '../services/data.service';
 
@@ -8,6 +8,8 @@ import { DataService } from '../services/data.service';
 	styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+	@Output() bodyScrollEmit = new EventEmitter<boolean>();
+
 	movies: IMovie[];
 	modalVisability: boolean = true;
 	modalMovie: IMovie;
@@ -26,9 +28,11 @@ export class HomeComponent implements OnInit {
 		this.modalVisability = !this.modalVisability;
 
 		if(this.modalVisability){
-
+			console.log(this.modalVisability);
+			this.bodyScrollEmit.emit(false);
 		}else{
-			
+			console.log(this.modalVisability);
+			this.bodyScrollEmit.emit(true);
 		}
 	}
 

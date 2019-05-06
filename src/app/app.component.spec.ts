@@ -20,16 +20,24 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'moviewebshop'`, () => {
+  it('should toggle body scroll', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('moviewebshop');
+	expect(app.bodyScroll).toBeFalsy();
+	app.toggleScroll(true);
+	expect(app.bodyScroll).toBeTruthy();
   });
 
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to moviewebshop!');
-  });
+//   it(`should have as title 'moviewebshop'`, () => {
+//     const fixture = TestBed.createComponent(AppComponent);
+//     const app = fixture.debugElement.componentInstance;
+//     expect(app.title).toEqual('moviewebshop');
+//   });
+
+//   it('should render title in a h1 tag', () => {
+//     const fixture = TestBed.createComponent(AppComponent);
+//     fixture.detectChanges();
+//     const compiled = fixture.debugElement.nativeElement;
+//     expect(compiled.querySelector('h1').textContent).toContain('Welcome to moviewebshop!');
+//   });
 });

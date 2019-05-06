@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IMovie } from '../interfaces/IMovie';
 
 @Component({
@@ -8,7 +8,12 @@ import { IMovie } from '../interfaces/IMovie';
 })
 export class MovieDetailsComponent implements OnInit {
 	@Input() modalMovie: IMovie;
+	@Output() closeThisModal = new EventEmitter<boolean>();
 
+	closeModal(){
+		this.closeThisModal.emit();
+		//console.log(closeIt);
+	}
 	constructor() { }
 
 	ngOnInit() {
