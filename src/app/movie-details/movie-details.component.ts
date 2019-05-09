@@ -12,7 +12,6 @@ export class MovieDetailsComponent implements OnInit {
 
 	closeModal(){
 		this.closeThisModal.emit();
-		//console.log(closeIt);
 	}
 	constructor() { }
 

@@ -1,0 +1,8 @@
+<nav>
+	<form>
+		<input type="text" placeholder="Find your favourite movie...">
+		<button>Search</button>
+	</form>
+	<button class="cart" (click)="toggleCart()"><i class="fas fa-shopping-cart"></i></button>
+	<app-cart [class.display_cart]="cartVisability"></app-cart>
+</nav>

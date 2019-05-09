@@ -2,9 +2,13 @@
 	<h1>
 		Movie Shop
 	</h1>
+
+	<app-navbar [class.fixed_navigation]="fixedNavBar" (scroll)="onScroll($event)"></app-navbar>	
 </header>
 
-<main>
+
+
+<main [class.main_margin]="fixedNavBar">
 	<router-outlet></router-outlet>
 </main>
 

@@ -4,12 +4,14 @@
 @import url('https://fonts.googleapis.com/css?family=Pacifico');
 
 * {
-    font-family: 'Raleway', sans-serif;
+	font-family: 'Raleway', sans-serif;
+	/* border: 1px solid red; */
+	box-sizing: border-box;
 }
 
 body {
 	margin: 0;
-	background-color: #27272b;
+	/* background-color: #27272b; */
 }
 
 .no_scroll {

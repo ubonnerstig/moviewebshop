@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject, HostListener } from '@angular/core';
 import { BodyScrollService } from './services/body-scroll.service';
 
 @Component({
@@ -11,6 +11,7 @@ import { BodyScrollService } from './services/body-scroll.service';
 })
 export class AppComponent {
 	bodyScroll: boolean;
+	fixedNavBar: boolean;
 
 	constructor(scrollService: BodyScrollService) {
 		scrollService.toggleScroll$.subscribe(
@@ -18,4 +19,24 @@ export class AppComponent {
 				this.bodyScroll = bodyScroll;
 		});
 	}
+
+	ngOnInit() {
+		
+	}
+
+	fixUnfixNavbar(navbarBoolean: boolean){
+		this.fixedNavBar = navbarBoolean;
+	}
+
+	@HostListener('window:scroll', ['$event']) onScrollEvent($event){
+		// console.log($event);
+		// console.log($event.path[1].scrollY);
+		if ($event.path[1].scrollY >= 175){
+			this.fixUnfixNavbar(true);
+		} else if($event.path[1].scrollY <= 175) {
+			this.fixUnfixNavbar(false);
+		}
+
+	  }
+
 }
