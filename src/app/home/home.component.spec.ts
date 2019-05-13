@@ -5,17 +5,22 @@ import { PrintMovieComponent } from '../print-movie/print-movie.component';
 import { DataService } from '../services/data.service';
 import { MockDataService } from '../services/mock-data.service';
 import { MovieDetailsComponent } from '../movie-details/movie-details.component';
+import { ReplaySubject } from 'rxjs';
 
 describe('HomeComponent', () => {
 	let component: HomeComponent;
 	let fixture: ComponentFixture<HomeComponent>;
 
+	let backend: MockDataService;
+
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 		declarations: [ HomeComponent, PrintMovieComponent, MovieDetailsComponent ]
 		})
-		.overrideComponent(HomeComponent, {set: { providers: [{ provide:
-		DataService, useClass: MockDataService}]}})
+		.overrideComponent(HomeComponent, {set: { providers: 
+			[
+				{ provide: DataService, useClass: MockDataService}
+			]}})
 		.compileComponents();
 	}));
 
@@ -23,6 +28,8 @@ describe('HomeComponent', () => {
 		fixture = TestBed.createComponent(HomeComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
+
+		backend = TestBed.get(MockDataService);
 	});
 
 	it('should create', () => {
@@ -44,6 +51,19 @@ describe('HomeComponent', () => {
 	it('should recieve movie from child', () => {
 		component.movieInfo({ id: 1, name: 'Batcat the cat bat', description: 'lol', price: 122,imageUrl: 'https://fashionjitsudotcom.files.wordpress.com/2017/10/screen-shot-2017-09-25-at-2-52-46-pm.png',year: 1999,added: 'datum',productCategory:[]});
 		expect(component.modalMovie.name).toBe('Batcat the cat bat');
+	});
+
+	it('should add movies to search array depending on search term', () => {
+		component.movieSearch = "One";
+
+		backend.getSearch(component.movieSearch).subscribe(
+			searchedMovie => {
+				component.movies = searchedMovie;
+			}
+		);
+
+		expect(component.movies[0].name).toBe("One");
+
 	});
 
 });

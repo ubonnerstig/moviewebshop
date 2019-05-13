@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { IMovie } from '../interfaces/IMovie';
 import { DataService } from '../services/data.service';
 import { BodyScrollService } from '../services/body-scroll.service';
+import { SearchService } from '../services/search.service';
 
 @Component({
 	selector: 'app-home',
@@ -16,14 +17,34 @@ export class HomeComponent implements OnInit {
 
 	bodyScroll: boolean;
 
-	constructor(dataService: DataService, private scrollService: BodyScrollService) {
-		dataService.getData().subscribe(movies =>  {
+	movieSearch: string;
+	movieSearchResult: IMovie[];
+
+	constructor(private dataService: DataService, private scrollService: BodyScrollService, searchService: SearchService) {
+		dataService.getData().subscribe(movies => {
 			this.movies = movies;
 			this.modalMovie = this.movies[0];
 		});
+
+		searchService.searchedString$.subscribe(
+			movieSearch => {
+				this.movieSearch = movieSearch;
+
+				this.dataService.getSearch(this.movieSearch).subscribe(
+					searchedMovies => {
+						this.movies = searchedMovies;
+						console.log(this.movieSearch);
+						console.log(this.movieSearchResult);
+					});
+
+
+			}
+		);
+
 	}
 
 	ngOnInit() {
+
 	}
 
 	toggleModal(){

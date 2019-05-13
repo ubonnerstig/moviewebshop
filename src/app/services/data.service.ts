@@ -8,7 +8,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DataService implements IDataService {
-	movies: IMovie[]
+	movies: IMovie[];
+	searchedMovies: IMovie[];
 
 	constructor(private httpClient: HttpClient) { }
 
@@ -16,7 +17,12 @@ export class DataService implements IDataService {
 		return this.httpClient.get<IMovie[]>('https://medieinstitutet-wie-products.azurewebsites.net/api/products');
 	}
 
-	// ngOnInit(){
-	// 	this.movies = this.service.getData();
-	// }
+	getSearch(searchString: string): Observable<IMovie[]>{
+		if(searchString === "" || searchString === null || searchString === undefined){
+			return this.getData();
+		}else{
+			return this.httpClient.get<IMovie[]>('https://medieinstitutet-wie-products.azurewebsites.net/api/search?searchText='+searchString);
+		}
+	}
+
 }

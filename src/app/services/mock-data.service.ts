@@ -51,8 +51,21 @@ export class MockDataService implements IDataService {
 		},
 	];
 
+	// searchedMovies: Array<IMovie> = [];
+
+	searchedMovies: IMovie[] = [];
+
 	getData(): Observable<IMovie[]>{
 		return of(this.movies);
+	}
+
+	getSearch(searchString: string): Observable<IMovie[]>{
+		for(let i = 0; i < this.movies.length; i++) {
+			if(this.movies[i].name.indexOf(searchString) >= 0) {
+				this.searchedMovies.push(this.movies[i]);
+			}
+		}
+		return of(this.searchedMovies);
 	}
   	constructor() { }
 }
