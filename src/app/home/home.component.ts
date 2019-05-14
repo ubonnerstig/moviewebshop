@@ -14,11 +14,10 @@ export class HomeComponent implements OnInit {
 	movies: IMovie[];
 	modalVisability: boolean = true;
 	modalMovie: IMovie;
-
 	bodyScroll: boolean;
-
 	movieSearch: string;
-	movieSearchResult: IMovie[];
+
+	noMovies: boolean;
 
 	constructor(private dataService: DataService, private scrollService: BodyScrollService, searchService: SearchService) {
 		dataService.getData().subscribe(movies => {
@@ -26,21 +25,14 @@ export class HomeComponent implements OnInit {
 			this.modalMovie = this.movies[0];
 		});
 
-		searchService.searchedString$.subscribe(
-			movieSearch => {
-				this.movieSearch = movieSearch;
+		searchService.searchedString$.subscribe(movieSearch => {
+			this.movieSearch = movieSearch;
 
-				this.dataService.getSearch(this.movieSearch).subscribe(
-					searchedMovies => {
-						this.movies = searchedMovies;
-						console.log(this.movieSearch);
-						console.log(this.movieSearchResult);
-					});
-
-
-			}
-		);
-
+			this.dataService.getSearch(this.movieSearch).subscribe(searchedMovies => {
+				this.movies = searchedMovies;
+				this.moviesFound(this.movies.length);
+			});
+		});
 	}
 
 	ngOnInit() {
@@ -62,6 +54,14 @@ export class HomeComponent implements OnInit {
 	movieInfo(movie: IMovie){
 		this.toggleModal();
 		this.modalMovie = movie;
+	}
+
+	moviesFound(arrayLength){
+		if(arrayLength == 0){
+			this.noMovies = true;
+		}else{
+			this.noMovies = false;
+		}
 	}
 
 }

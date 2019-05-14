@@ -1,5 +1,6 @@
 <div class="flex">
 	<app-print-movie class="col" *ngFor="let movie of movies" [movie]="movie" (thisMovieInfo)="movieInfo($event)"></app-print-movie>
+	<p *ngIf="noMovies">No movies found, please try again!</p>
 </div>
 
 

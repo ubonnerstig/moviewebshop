@@ -5,7 +5,6 @@ import { PrintMovieComponent } from '../print-movie/print-movie.component';
 import { DataService } from '../services/data.service';
 import { MockDataService } from '../services/mock-data.service';
 import { MovieDetailsComponent } from '../movie-details/movie-details.component';
-import { ReplaySubject } from 'rxjs';
 
 describe('HomeComponent', () => {
 	let component: HomeComponent;
@@ -63,7 +62,20 @@ describe('HomeComponent', () => {
 		);
 
 		expect(component.movies[0].name).toBe("One");
+	});
 
+	it('should toggle noMovies from false to true if no movies are found', () => {
+		expect(component.noMovies).toBeFalsy();
+		component.movieSearch = "None";
+
+		backend.getSearch(component.movieSearch).subscribe(
+			searchedMovie => {
+				component.movies = searchedMovie;
+				component.moviesFound(component.movies.length);
+			}
+		);
+		
+		expect(component.noMovies).toBeTruthy();
 	});
 
 });
