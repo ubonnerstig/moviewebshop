@@ -17,10 +17,22 @@ a {
 
 }
 
+.cart_inner_wrap {
+	opacity: 0;
+    transition: opacity 0s ease-in-out!important;
+    animation-delay: 0s;
+}
+
+.cart_inner_wrap_expanded {
+	opacity: 1;
+    transition: opacity 1s ease-in-out!important;
+	animation-delay: 0.5s;
+}
+
 .cart_content {
 	max-height: 0;
     overflow: hidden;
-	/* transition: max-height .5s ease-in-out; */
+	transition: max-height .5s ease-in-out;
 	-webkit-transition: all 500ms ease-in-out;
     -moz-transition: all 500ms ease-in-out;
     -ms-transition: all 500ms ease-in-out;
@@ -33,7 +45,6 @@ a {
 }
 
 .cart_footer {
-
 	text-align: center;
 	margin-bottom: 0;
 	padding: 18px 18px;
@@ -44,14 +55,16 @@ a {
     -ms-transition: all 500ms ease-in-out;
     -o-transition: all 500ms ease-in-out;
 	transition: all 500ms ease-in-out;
-    /* transition: max-height .5s ease-in-out;
+    transition: max-height .5s ease-in-out;
     transition-property: max-height;
     transition-duration: 0.5s;
-    transition-timing-function: ease-in-out;
-	transition-delay: 0s; */
-	
+    transition-timing-function: ease-in-out;	
 }
 
 .cart_footer_expanded {
 	max-height: 10rem;
+	/* margin-bottom: 20px; */
+
+	
+
 }

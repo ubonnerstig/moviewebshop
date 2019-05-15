@@ -1,11 +1,16 @@
-<div class="cart_header">
-	<h2>Cart</h2>
-</div>
-<div class="cart_content" [class.cart_content_expanded]="cartExpanded">
-	<p>
-		cart works!
-	</p>
-</div>
-<div class="cart_footer" [class.cart_footer_expanded]="cartExpanded">
-		<a routerLink="checkout" routerLinkActive="active">Checkout</a> 
+
+<div [class.cart_inner_wrap]="!cartExpanded" [class.cart_inner_wrap_expanded]="cartExpanded">
+
+	<div class="cart_header">
+		<h2>Cart</h2>
+	</div>
+	<div class="cart_content" [class.cart_content_expanded]="cartExpanded">
+		<p *ngIf="emptyCart">
+			Your cart is empty
+		</p>
+		<app-print-cart-item class="col" *ngFor="let cartItem of cartContent" [cartItem]="cartItem"></app-print-cart-item>
+	</div>
+	<div class="cart_footer" [class.cart_footer_expanded]="cartExpanded">
+		<a routerLink="checkout" routerLinkActive="active" (click)="toggleCart(false)">Checkout</a> 
+	</div>
 </div>

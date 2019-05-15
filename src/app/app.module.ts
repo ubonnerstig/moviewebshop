@@ -12,6 +12,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PrintCartItemComponent } from './print-cart-item/print-cart-item.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 	NavbarComponent,
 	CartComponent,
 	CheckoutComponent,
-	PageNotFoundComponent
+	PageNotFoundComponent,
+	PrintCartItemComponent
   ],
   imports: [
     BrowserModule,

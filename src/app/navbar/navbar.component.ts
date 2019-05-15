@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { SearchService } from '../services/search.service';
+import { delay } from 'q';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +9,7 @@ import { SearchService } from '../services/search.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-	cartVisability: boolean = false;
+	cartVisibility: boolean = false;
 	searchForm: FormGroup = this.fb.group({
 		movieName:['']
 	});
@@ -27,7 +28,19 @@ export class NavbarComponent implements OnInit {
 		this.searchService.searchThis(this.movieName.value);
 	}
 
-	toggleCart(){
-		this.cartVisability = !this.cartVisability;
+	// delay(ms: number) {
+	// 	return new Promise( resolve => setTimeout(resolve, ms) );
+	// }
+
+	async toggleCart(visibility){
+		this.cartVisibility = visibility;
+
+		// if(!visibility){
+		// 	await delay(500);
+		// 	this.cartVisibility = visibility;
+		// }else{
+		// 	await delay(5);
+		// 	this.cartVisibility = visibility;
+		// }
 	}
 }
