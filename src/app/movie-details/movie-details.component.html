@@ -1,5 +1,5 @@
 <div class="modal_background" (click)="closeModal()"></div>
-<div class="modal_content">
+<div *ngIf="modalMovie" class="modal_content">
 	<div class="close" (click)="closeModal()"><i class="fas fa-times"></i></div>
 	<div class="modal_img_container">
 		<img src='{{ modalMovie.imageUrl }}' />
@@ -11,5 +11,11 @@
 		<p>
 			{{modalMovie.description}}
 		</p>
+
+		<form (ngSubmit)="addToCart({quantity: movieQuantity.value})">
+			<input type="number" #movieQuantity value="1">
+			<button type="submit">Add to cart</button>
+		</form>
 	</div>
+
 </div>

@@ -29,9 +29,9 @@ export class AppComponent {
 	}
 
 	@HostListener('window:scroll', ['$event']) onScrollEvent($event){
-		if ($event.path[1].scrollY >= 175){
+		if ($event.path[1].scrollY >= 170){
 			this.fixUnfixNavbar(true);
-		} else if($event.path[1].scrollY <= 175) {
+		} else if($event.path[1].scrollY <= 170) {
 			this.fixUnfixNavbar(false);
 		}
 

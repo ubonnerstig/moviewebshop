@@ -10,6 +10,7 @@
 
 .modal_content {
 	top: 0;
+	border-radius: .5rem;
 	width: 40rem;
 	padding: 1rem;
 	background-color: #ffffff;
@@ -54,4 +55,31 @@ h3 {
 	height: 1.2rem;
 	z-index: 1000;
 	right: 20px;
+}
+
+form {
+	text-align: left;
+	/* padding: 2rem; */
+}
+
+form > input {
+	width: 3rem;
+	height: 2rem;
+	font-size: 1rem;
+	border-radius: 2rem;
+	border: 1px solid gray;
+	/* padding-left: 1rem; */
+	text-align: center;
+	margin-right: .5rem;
+}
+
+form > button {
+	width: 6rem;
+	height: 2rem;
+	font-size: .8rem;
+	border-radius: 2rem;
+	background-color: #ebb502;
+	color: #ffffff;
+	border: none;
+	margin-right: .2rem;
 }

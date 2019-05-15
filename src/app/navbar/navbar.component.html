@@ -4,5 +4,5 @@
 		<button type="submit">Search</button>
 	</form>
 	<button class="cart" (click)="toggleCart()"><i class="fas fa-shopping-cart"></i></button>
-	<app-cart [class.display_cart]="cartVisability"></app-cart>
+	<app-cart class="cart_wrap" [class.display_cart]="cartVisability" [cartExpanded]="cartVisability"></app-cart>
 </nav>

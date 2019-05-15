@@ -12,7 +12,7 @@ describe('MovieDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MovieDetailsComponent, TestHostComponent ]
+	  declarations: [ MovieDetailsComponent, TestHostComponent ]
     })
     .compileComponents();
   }));

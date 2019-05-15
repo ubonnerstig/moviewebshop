@@ -10,12 +10,19 @@ export class MovieDetailsComponent implements OnInit {
 	@Input() modalMovie: IMovie;
 	@Output() closeThisModal = new EventEmitter<boolean>();
 
-	closeModal(){
-		this.closeThisModal.emit();
-	}
 	constructor() { }
 
 	ngOnInit() {
+	}
+
+	closeModal(){
+		this.closeThisModal.emit();
+	}
+
+	addToCart(quantity){
+		console.log(quantity);
+		console.log(this.modalMovie);
+		// this.searchService.searchThis(this.addedMovie.value);
 	}
 
 }

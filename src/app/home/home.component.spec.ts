@@ -5,6 +5,7 @@ import { PrintMovieComponent } from '../print-movie/print-movie.component';
 import { DataService } from '../services/data.service';
 import { MockDataService } from '../services/mock-data.service';
 import { MovieDetailsComponent } from '../movie-details/movie-details.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('HomeComponent', () => {
 	let component: HomeComponent;
@@ -14,7 +15,8 @@ describe('HomeComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-		declarations: [ HomeComponent, PrintMovieComponent, MovieDetailsComponent ]
+		declarations: [ HomeComponent, PrintMovieComponent, MovieDetailsComponent ],
+		imports: [FormsModule, ReactiveFormsModule]
 		})
 		.overrideComponent(HomeComponent, {set: { providers: 
 			[

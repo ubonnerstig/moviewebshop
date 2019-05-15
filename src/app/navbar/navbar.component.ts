@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
 		movieName:['']
 	});
 
-	constructor(private fb:FormBuilder, private searchService: SearchService) {}
+	constructor(private fb: FormBuilder, private searchService: SearchService) {}
 
 	ngOnInit() {
 

@@ -35,8 +35,6 @@ describe('PrintMovieComponent', () => {
 		testComponent.setInput({ id: 1, name: 'Batcat the cat bat', description: 'lol', price: 122,imageUrl: 'https://fashionjitsudotcom.files.wordpress.com/2017/10/screen-shot-2017-09-25-at-2-52-46-pm.png',year: 1999,added: 'datum',productCategory:[]});
 		testFixture.detectChanges();
 		expect(testComponent.movie.name).toBe('Batcat the cat bat');
-	 	//expect(testFixture.nativeElement.querySelector('p').innerText).toEqual('Batcat the cat bat');
-	 	//expect(testFixture.nativeElement.querySelector('div').innerHTML).toEqual(`<img _ngcontent-a-c10="" src="https://fashionjitsudotcom.files.wordpress.com/2017/10/screen-shot-2017-09-25-at-2-52-46-pm.png"><p _ngcontent-a-c10="" class="title"> Batcat the cat bat </p><button _ngcontent-a-c10="">Check</button>`);
 	});
 
 	// describe('movieInfo', () => {
@@ -84,8 +82,6 @@ describe('PrintMovieComponent', () => {
 
 		setInput(theMovie: IMovie) {
 			this.movie = theMovie;
-			// console.log(this.movie.imageUrl);
-			// console.log(this.movie.name);
 		}
 
 		// movieInfo(movie: IMovie){

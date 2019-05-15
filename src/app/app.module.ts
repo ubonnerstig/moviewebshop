@@ -10,6 +10,8 @@ import { PrintMovieComponent } from './print-movie/print-movie.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { CartComponent } from './cart/cart.component';
     PrintMovieComponent,
 	MovieDetailsComponent,
 	NavbarComponent,
-	CartComponent
+	CartComponent,
+	CheckoutComponent,
+	PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

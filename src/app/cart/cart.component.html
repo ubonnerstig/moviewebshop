@@ -1,3 +1,11 @@
-<p>
-  cart works!
-</p>
+<div class="cart_header">
+	<h2>Cart</h2>
+</div>
+<div class="cart_content" [class.cart_content_expanded]="cartExpanded">
+	<p>
+		cart works!
+	</p>
+</div>
+<div class="cart_footer" [class.cart_footer_expanded]="cartExpanded">
+		<a routerLink="checkout" routerLinkActive="active">Checkout</a> 
+</div>

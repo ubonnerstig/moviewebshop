@@ -19,4 +19,9 @@ export class PrintMovieComponent implements OnInit {
 	ngOnInit() {
 	}
 
+	addToCart(event){
+		event.stopPropagation();
+		console.log(this.movie);
+	}
+
 }
