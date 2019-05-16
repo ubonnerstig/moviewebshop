@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CartComponent } from './cart/cart.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PrintCartItemComponent } from './print-cart-item/print-cart-item.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -16,7 +17,8 @@ describe('AppComponent', () => {
       declarations: [
 		AppComponent,
 		NavbarComponent,
-		CartComponent
+		CartComponent,
+		PrintCartItemComponent
       ],
     }).compileComponents();
   }));

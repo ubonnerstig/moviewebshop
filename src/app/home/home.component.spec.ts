@@ -55,28 +55,16 @@ describe('HomeComponent', () => {
 	});
 
 	it('should add movies to search array depending on search term', () => {
-		component.movieSearch = "One";
-
-		backend.getSearch(component.movieSearch).subscribe(
-			searchedMovie => {
-				component.movies = searchedMovie;
-			}
-		);
+		component.handleSearch("One");
 
 		expect(component.movies[0].name).toBe("One");
 	});
 
 	it('should toggle noMovies from false to true if no movies are found', () => {
 		expect(component.noMovies).toBeFalsy();
-		component.movieSearch = "None";
 
-		backend.getSearch(component.movieSearch).subscribe(
-			searchedMovie => {
-				component.movies = searchedMovie;
-				component.moviesFound(component.movies.length);
-			}
-		);
-		
+		component.handleSearch("None");
+
 		expect(component.noMovies).toBeTruthy();
 	});
 

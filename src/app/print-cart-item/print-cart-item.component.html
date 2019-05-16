@@ -1,3 +1,21 @@
-<p>
-	{{ cartItem.movie.name }} {{ cartItem.quantity }}
-</p>
+<div *ngIf="cartItem" class="img_container">
+	<img src="{{ cartItem.movie.imageUrl }}" />
+</div>
+<div *ngIf="cartItem" class="info_col">
+	<div class="info_header">
+		<h2>
+			{{ cartItem.movie.name }} 
+		</h2>
+		<p>
+			{{ cartItem.movie.price }} kr
+		</p>
+	</div>
+	<div class="info_body">
+		Qty:  {{ cartItem.quantity }} 
+	</div>
+	<div class="info_footer">
+		<button (click)="removeFromCart()">Remove from cart</button>
+	</div>
+</div>
+
+

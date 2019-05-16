@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IMovie } from '../interfaces/IMovie';
 import { AddToCartService } from '../services/add-to-cart.service';
 import { ICartItem } from '../interfaces/ICartItem';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-print-movie',
@@ -18,7 +19,7 @@ export class PrintMovieComponent implements OnInit {
 		this.thisMovieInfo.emit(this.movie);
 	}
 
-	constructor(private cartService: AddToCartService) { }
+	constructor(private cartService: CartService) { }
 
 	ngOnInit() {
 	}
@@ -29,7 +30,7 @@ export class PrintMovieComponent implements OnInit {
 			movie: this.movie,
 			quantity: 1
 		}
-		this.cartService.addThis(this.cartMovie);
+		this.cartService.addToCart(this.cartMovie);
 	}
 
 }

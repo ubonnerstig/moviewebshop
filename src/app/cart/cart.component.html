@@ -5,12 +5,18 @@
 		<h2>Cart</h2>
 	</div>
 	<div class="cart_content" [class.cart_content_expanded]="cartExpanded">
-		<p *ngIf="emptyCart">
+		<p class="empty_cart" *ngIf="emptyCart">
 			Your cart is empty
 		</p>
-		<app-print-cart-item class="col" *ngFor="let cartItem of cartContent" [cartItem]="cartItem"></app-print-cart-item>
+		<app-print-cart-item class="flex_row" *ngFor="let cartItem of cartContent.cartItems" [cartItem]="cartItem" (removeItem)="removeFromCart($event)"></app-print-cart-item>
 	</div>
 	<div class="cart_footer" [class.cart_footer_expanded]="cartExpanded">
-		<a routerLink="checkout" routerLinkActive="active" (click)="toggleCart(false)">Checkout</a> 
+		<div *ngIf="!emptyCart" class="col">
+			<h3>Total: </h3> 
+			<p>{{ cartContent.totalPrice }} kr</p>
+		</div>
+		<div class="col">
+			<a routerLink="checkout" routerLinkActive="active" (click)="toggleCart(false)">Checkout</a> 
+		</div>
 	</div>
 </div>

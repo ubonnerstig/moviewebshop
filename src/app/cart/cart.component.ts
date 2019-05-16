@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AddToCartService } from '../services/add-to-cart.service';
 import { ICartItem } from '../interfaces/ICartItem';
+import { CartService } from '../services/cart.service';
+import { ICart } from '../interfaces/ICart';
 
 @Component({
   selector: 'app-cart',
@@ -12,53 +14,39 @@ export class CartComponent implements OnInit {
 	@Output() closeThisCart = new EventEmitter<boolean>();
 
 	cartMovie: ICartItem;
-	cartContent: ICartItem[];
+	cartContent: ICart;
 	emptyCart: boolean = true;
 
-	constructor(cartService: AddToCartService) {
-		cartService.addedMovie$.subscribe(addedMovie => {
-			this.cartMovie = addedMovie;
-			
-			this.addToCart(this.cartMovie);
-		});
+	constructor(private cartService: CartService) {
 	}
 
 	ngOnInit() {
-		this.getFromLocalStorage();
+	 this.cartContent =	this.cartService.getCart();
+		this.cartService.thisMovie$.subscribe(addedMovie => {
+			this.cartContent = addedMovie;
+
+			this.checkContentLength(this.cartContent.cartItems.length);
+		});
 	}
 
-	toggleCart(bool){
+	checkContentLength(contentLength: number){
+		if(contentLength > 0){
+			this.emptyCart = false;
+		}else{
+			this.emptyCart = true;
+		}
+	}
+
+	toggleCart(bool: boolean){
 		this.closeThisCart.emit(bool);
 	}
 
 	addToCart(cartItem: ICartItem){
-
-		for(let i = 0; i < this.cartContent.length; i++){
-
-			if(this.cartContent[i].movie.id === cartItem.movie.id){
-				this.cartContent[i].quantity++;
-				this.saveToLocalstorage(this.cartContent);
-				return;
-			}
-		}
-		this.cartContent.push(cartItem);
-		this.saveToLocalstorage(this.cartContent);
+		this.cartService.addToCart(cartItem);
 	}
 
-	saveToLocalstorage(cart){
-		localStorage.setItem("cart", JSON.stringify(cart));
-		this.getFromLocalStorage();
+	removeFromCart(cartItem: ICartItem){
+		this.cartService.removeFromCart(cartItem);
 	}
 
-	getFromLocalStorage(){
-		this.cartContent = JSON.parse(localStorage.getItem("cart"));
-
-		if(this.cartContent == null){
-			this.cartContent = [];
-		}
-
-		if(this.cartContent.length > 0){
-			this.emptyCart = false;
-		}
-	}
 }

@@ -19,24 +19,29 @@ export class HomeComponent implements OnInit {
 
 	noMovies: boolean;
 
-	constructor(private dataService: DataService, private scrollService: BodyScrollService, searchService: SearchService) {
-		dataService.getData().subscribe(movies => {
+	constructor(private dataService: DataService, private scrollService: BodyScrollService, private searchService: SearchService) {
+		this.handleSearch = this.handleSearch.bind(this);
+	}
+
+	ngOnInit() {
+		this.dataService.getData().subscribe(movies => {
 			this.movies = movies;
 			this.modalMovie = this.movies[0];
 		});
 
-		searchService.searchedString$.subscribe(movieSearch => {
-			this.movieSearch = movieSearch;
-
-			this.dataService.getSearch(this.movieSearch).subscribe(searchedMovies => {
-				this.movies = searchedMovies;
-				this.moviesFound(this.movies.length);
-			});
-		});
+		this.searchService.searchedString$.subscribe(this.handleSearch);
 	}
 
-	ngOnInit() {
+	handleSearch(movieSearch: string){	
+	 
+		console.log(movieSearch);
 
+		console.log(this.dataService);
+
+		this.dataService.getSearch(movieSearch).subscribe(searchedMovies => {
+			this.movies = searchedMovies;
+			this.moviesFound(this.movies.length);
+		});
 	}
 
 	toggleModal(){

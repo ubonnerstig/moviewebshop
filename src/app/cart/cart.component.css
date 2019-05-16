@@ -1,20 +1,12 @@
+* {
+	border: 1px solid red;
+}
 .cart_header {
 	text-align: center;
 }
-a {
-	margin: 0 auto;
-	padding: .5rem 1rem;
-	align-self: center;
+
+p.empty_cart {
 	text-align: center;
-	text-decoration: none;
-
-	height: 3rem;
-	font-size: 1rem;
-	border-radius: 2rem;
-	background-color: #E64980;
-	color: #ffffff;
-	border: none;
-
 }
 
 .cart_inner_wrap {
@@ -41,13 +33,13 @@ a {
 }
 
 .cart_content_expanded {
-	max-height: 650px;
+	max-height: 30rem;
+	overflow: scroll;
 }
 
 .cart_footer {
 	text-align: center;
-	margin-bottom: 0;
-	padding: 18px 18px;
+	padding: .5rem 0;
 	max-height: 0;
 	overflow: hidden;
 	-webkit-transition: all 500ms ease-in-out;
@@ -58,13 +50,74 @@ a {
     transition: max-height .5s ease-in-out;
     transition-property: max-height;
     transition-duration: 0.5s;
-    transition-timing-function: ease-in-out;	
+	transition-timing-function: ease-in-out;	
+	
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	box-sizing: border-box;
+	margin: 0 auto;
+
+	box-shadow:  0px -6px 5px 0px rgba(0,0,0,0.2);
 }
 
 .cart_footer_expanded {
 	max-height: 10rem;
 	/* margin-bottom: 20px; */
+}
 
-	
+.cart_footer > .col {
+	flex: 0 0 100%;
+	max-width: 95%;
 
+	margin: .5rem auto;
+
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	box-sizing: border-box;
+}
+
+.cart_footer > .col > h3 {
+	font-size: 1rem;
+	text-align: left;
+	margin: 0;
+	flex: 0 0 50%;
+	max-width: 50%;
+} 
+
+.cart_footer > .col > p {
+	text-align: right;
+	margin: 0;
+	flex: 0 0 50%;
+	max-width: 50%;
+} 
+
+.cart_footer > .col > a {
+	flex: 0 0 50%;
+	max-width: 50%;
+	margin: 0 auto;
+	padding: .8rem 1rem;
+	align-self: center;
+	text-align: center;
+	text-decoration: none;
+
+	/* height: 3rem; */
+	font-size: 1rem;
+	border-radius: 2rem;
+	background-color: #E64980;
+	color: #ffffff;
+	border: none;
+
+}
+
+app-print-cart-item.flex_row {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	box-sizing: border-box;
+	max-width: 95%;
+	margin: .5rem auto;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid gray;
 }
