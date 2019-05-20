@@ -18,7 +18,8 @@ export class CartService {
 
 		for(let i = 0; i < this.cart.cartItems.length; i++){
 			if(this.cart.cartItems[i].movie.id === addedMovie.movie.id){
-				this.cart.cartItems[i].quantity++;
+				this.cart.cartItems[i].quantity += addedMovie.quantity;
+				
 				foundMovie = true;
 			}
 		}
@@ -53,8 +54,7 @@ export class CartService {
 		this.cartSource.next(this.cart);
 	}
 
-	getCart() : ICart {
-	
+	getCart(): ICart {
 		this.cart = JSON.parse(localStorage.getItem("cart"));
 
 		if(this.cart == null){
@@ -65,7 +65,6 @@ export class CartService {
 		}
 
 		return this.cart;
-
 	}
 
   	constructor() { 

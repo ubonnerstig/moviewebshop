@@ -34,7 +34,6 @@ export class AppComponent {
 		} else if($event.path[1].scrollY <= 170) {
 			this.fixUnfixNavbar(false);
 		}
-
 	}
 
 }

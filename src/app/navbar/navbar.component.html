@@ -3,6 +3,6 @@
 		<input type="text" formControlName="movieName" placeholder="Find your favourite movie...">
 		<button type="submit">Search</button>
 	</form>
-	<button class="cart" (mouseover)="toggleCart(true)" (mouseleave)="toggleCart(false)"><i class="fas fa-shopping-cart"></i></button>
+	<button class="cart" (mouseover)="toggleCart(true, $event)" (mouseleave)="toggleCart(false)"><i class="fas fa-shopping-cart"></i></button>
 	<app-cart (mouseover)="toggleCart(true)" (mouseleave)="toggleCart(false)" class="cart_wrap" [class.cart_visible]="cartVisibility" [class.cart_invisible]="!cartVisibility" [cartExpanded]="cartVisibility" (closeThisCart)="toggleCart($event)"></app-cart>
 </nav>

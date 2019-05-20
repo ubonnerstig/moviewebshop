@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IMovie } from '../interfaces/IMovie';
+import { CartService } from '../services/cart.service';
+import { ICartItem } from '../interfaces/ICartItem';
 
 @Component({
   selector: 'app-movie-details',
@@ -10,7 +12,9 @@ export class MovieDetailsComponent implements OnInit {
 	@Input() modalMovie: IMovie;
 	@Output() closeThisModal = new EventEmitter<boolean>();
 
-	constructor() { }
+	cartMovie: ICartItem;
+
+	constructor(private cartService: CartService) { }
 
 	ngOnInit() {
 	}
@@ -19,10 +23,13 @@ export class MovieDetailsComponent implements OnInit {
 		this.closeThisModal.emit();
 	}
 
-	addToCart(quantity){
-		console.log(quantity);
-		console.log(this.modalMovie);
-		// this.searchService.searchThis(this.addedMovie.value);
-	}
+	addToCart(inputQuantity: number){
+		this.cartMovie = {
+			movie: this.modalMovie,
+			quantity: +inputQuantity
+		}
+		this.cartService.addToCart(this.cartMovie);
 
+		this.closeModal();
+	}
 }

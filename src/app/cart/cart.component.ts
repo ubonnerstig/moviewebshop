@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { AddToCartService } from '../services/add-to-cart.service';
 import { ICartItem } from '../interfaces/ICartItem';
 import { CartService } from '../services/cart.service';
 import { ICart } from '../interfaces/ICart';
@@ -24,9 +23,9 @@ export class CartComponent implements OnInit {
 	 this.cartContent =	this.cartService.getCart();
 		this.cartService.thisMovie$.subscribe(addedMovie => {
 			this.cartContent = addedMovie;
-
-			this.checkContentLength(this.cartContent.cartItems.length);
 		});
+
+		this.checkContentLength(this.cartContent.cartItems.length);
 	}
 
 	checkContentLength(contentLength: number){
@@ -37,16 +36,22 @@ export class CartComponent implements OnInit {
 		}
 	}
 
+	getBottomOffset(event){
+		console.log(event);
+	}
+
 	toggleCart(bool: boolean){
 		this.closeThisCart.emit(bool);
 	}
 
 	addToCart(cartItem: ICartItem){
 		this.cartService.addToCart(cartItem);
+		this.checkContentLength(this.cartContent.cartItems.length);
 	}
 
 	removeFromCart(cartItem: ICartItem){
 		this.cartService.removeFromCart(cartItem);
+		this.checkContentLength(this.cartContent.cartItems.length);
 	}
 
 }

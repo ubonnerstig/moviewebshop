@@ -32,7 +32,7 @@ export class NavbarComponent implements OnInit {
 	// 	return new Promise( resolve => setTimeout(resolve, ms) );
 	// }
 
-	async toggleCart(visibility){
+	toggleCart(visibility){
 		this.cartVisibility = visibility;
 
 		// if(!visibility){

@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IMovie } from '../interfaces/IMovie';
-import { AddToCartService } from '../services/add-to-cart.service';
 import { ICartItem } from '../interfaces/ICartItem';
 import { CartService } from '../services/cart.service';
 
