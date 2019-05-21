@@ -12,11 +12,6 @@
 			{{modalMovie.description}}
 		</p>
 
-		<!-- <form (ngSubmit)="addToCart({quantity: movieQuantity.value})">
-			<input type="number" #movieQuantity value="1">
-			<button type="submit">Add to cart</button>
-		</form> -->
-
 		<input type="number" #movieQuantity (keyUp.enter)="addToCart(movieQuantity.value);movieQuantity.value=1" value="1">
 		<button (click)="addToCart(movieQuantity.value);movieQuantity.value=1">Add to cart</button>
 	</div>
