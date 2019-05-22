@@ -1,3 +1,28 @@
-<p>
-  checkout works!
-</p>
+<div class="flex">
+	<div class ="col">
+		<h2>
+			Shipping information
+		</h2>
+		<form [formGroup]="orderForm" (ngSubmit)="placeOrder()">
+			<input type="text" formControlName="firstName" placeholder="Firstname" />
+			<input type="text" formControlName="lastName" placeholder="Surname" />
+			<input type="text" formControlName="address" placeholder="Address" />
+			<input type="number" formControlName="postal" placeholder="Postal code" />
+			<input type="text" formControlName="city" placeholder="City" />
+			<input type="email" formControlName="email" placeholder="Email" />
+			<button type="submit">Place Order</button>
+		</form>
+
+	</div>
+	<div class ="col">
+		<h2>
+			Order details
+		</h2>
+
+			<app-print-order-item class="flex_row" *ngFor="let cartItem of cartContent.cartItems" [cartItem]="cartItem" (removeItem)="removeFromCart($event)"></app-print-order-item>
+		<h3>Total: </h3> 
+			<p>{{ cartContent.totalPrice }} kr</p>
+		
+	</div>
+
+</div>
