@@ -18,7 +18,9 @@
 		<h2>
 			Order details
 		</h2>
-
+			<p class="empty_cart" *ngIf="emptyCart">
+				Your cart is empty
+			</p>
 			<app-print-order-item class="flex_row" *ngFor="let cartItem of cartContent.cartItems" [cartItem]="cartItem" (removeItem)="removeFromCart($event)"></app-print-order-item>
 		<h3>Total: </h3> 
 			<p>{{ cartContent.totalPrice }} kr</p>

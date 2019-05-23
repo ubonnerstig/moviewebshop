@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class CheckoutComponent implements OnInit {
 	cartContent: ICart;
+	emptyCart: boolean = true;
 	orderForm: FormGroup = this.fb.group({
 		firstName:[''],
 		lastName:[''],
@@ -26,6 +27,16 @@ export class CheckoutComponent implements OnInit {
 		this.cartService.thisMovie$.subscribe(addedMovie => {
 			this.cartContent = addedMovie;
 		});
+		this.checkContentLength(this.cartContent.cartItems.length);
 	}
+
+	checkContentLength(contentLength: number){
+		if(contentLength > 0){
+			this.emptyCart = false;
+		}else{
+			this.emptyCart = true;
+		}
+	}
+
 
 }
