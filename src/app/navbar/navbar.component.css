@@ -54,14 +54,11 @@ form > button {
 button.cart {
 	flex: 0 0 15%;
 	max-width: 15rem;
-	/* margin: 0 1%; */
 	align-self: center;
 	text-align: center;
-
 	height: 3rem;
 	font-size: 1.5rem;
 	border-radius: 2rem;
-	/* background-color: #c40464; */
 	background-color: #E64980;
 	color: #ffffff;
 	border: none;

@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class DataService implements IDataService {
 	movies: IMovie[];
 	searchedMovies: IMovie[];
+	orders
 
 	constructor(private httpClient: HttpClient) { }
 
@@ -24,5 +25,6 @@ export class DataService implements IDataService {
 			return this.httpClient.get<IMovie[]>('https://medieinstitutet-wie-products.azurewebsites.net/api/search?searchText='+searchString);
 		}
 	}
+
 
 }

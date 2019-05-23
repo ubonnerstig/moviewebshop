@@ -33,11 +33,6 @@ export class HomeComponent implements OnInit {
 	}
 
 	handleSearch(movieSearch: string){	
-	 
-		console.log(movieSearch);
-
-		console.log(this.dataService);
-
 		this.dataService.getSearch(movieSearch).subscribe(searchedMovies => {
 			this.movies = searchedMovies;
 			this.moviesFound(this.movies.length);

@@ -24,7 +24,6 @@ export class CartComponent implements OnInit {
 		this.cartService.thisMovie$.subscribe(addedMovie => {
 			this.cartContent = addedMovie;
 		});
-
 		this.checkContentLength(this.cartContent.cartItems.length);
 	}
 
@@ -37,7 +36,7 @@ export class CartComponent implements OnInit {
 	}
 
 	getBottomOffset(event){
-		console.log(event);
+		// console.log(event);
 	}
 
 	toggleCart(bool: boolean){
