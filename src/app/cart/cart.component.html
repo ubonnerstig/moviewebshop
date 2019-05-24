@@ -1,21 +1,23 @@
 
 <div [class.cart_inner_wrap]="!cartExpanded" [class.cart_inner_wrap_expanded]="cartExpanded">
-
 	<div class="cart_header">
 		<h2>Cart</h2>
 	</div>
 	<div class="cart_content" [class.cart_content_expanded]="cartExpanded">
-		<p class="empty_cart" *ngIf="emptyCart">
-			Your cart is empty
-		</p>
+		<div class="empty_cart" *ngIf="emptyCart">
+			<p>
+				Your cart is empty
+			</p>
+			<i class="fas fa-dizzy"></i>
+		</div>
 		<app-print-cart-item class="flex_row" *ngFor="let cartItem of cartContent.cartItems" [cartItem]="cartItem" (removeItem)="removeFromCart($event)"></app-print-cart-item>
 	</div>
 	<div class="cart_footer" [class.cart_footer_expanded]="cartExpanded">
-		<div *ngIf="!emptyCart" class="col">
+		<div *ngIf="!emptyCart" class="col_full">
 			<h3>Total: </h3> 
 			<p>{{ cartContent.totalPrice }} kr</p>
 		</div>
-		<div class="col">
+		<div class="col_full">
 			<a routerLink="checkout" routerLinkActive="active" (click)="toggleCart(false)">Checkout</a> 
 		</div>
 	</div>

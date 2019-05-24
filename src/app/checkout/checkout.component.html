@@ -3,28 +3,37 @@
 		<h2>
 			Shipping information
 		</h2>
-		<form [formGroup]="orderForm" (ngSubmit)="placeOrder()">
+		<form [formGroup]="orderForm">
 			<input type="text" formControlName="firstName" placeholder="Firstname" />
 			<input type="text" formControlName="lastName" placeholder="Surname" />
 			<input type="text" formControlName="address" placeholder="Address" />
 			<input type="number" formControlName="postal" placeholder="Postal code" />
 			<input type="text" formControlName="city" placeholder="City" />
 			<input type="email" formControlName="email" placeholder="Email" />
-			<button type="submit">Place Order</button>
+			<label for="paymentMethod">Payment method:</label>
+			<select id="paymentMethod" formControlName="paymentMethod">
+				<option value="paypal">PayPal</option>
+				<option value="bitcoin">Bitcoin</option>
+				<option value="icecream">Ice Cream</option>
+			</select>
 		</form>
-
 	</div>
 	<div class ="col">
 		<h2>
 			Order details
 		</h2>
-			<p class="empty_cart" *ngIf="emptyCart">
+		<div class="empty_cart" *ngIf="emptyCart">
+			<p>
 				Your cart is empty
 			</p>
-			<app-print-order-item class="flex_row" *ngFor="let cartItem of cartContent.cartItems" [cartItem]="cartItem" (removeItem)="removeFromCart($event)"></app-print-order-item>
-		<h3>Total: </h3> 
-			<p>{{ cartContent.totalPrice }} kr</p>
-		
+			<!-- <i class="far fa-frown"></i> -->
+			<i class="fas fa-dizzy"></i>
+		</div>
+		<app-print-order-item *ngFor="let cartItem of cartContent.cartItems" [cartItem]="cartItem" (removeItem)="removeFromCart($event)" (changeItemQuantity)="changeQuantity($event)"></app-print-order-item>
+	</div>
+	<div class="col_full" *ngIf="!emptyCart">
+		<h3><b>Total: </b>{{ cartContent.totalPrice }} kr</h3> 
+		<button type="submit" (click)="placeOrder()">Place Order</button>
 	</div>
 
 </div>

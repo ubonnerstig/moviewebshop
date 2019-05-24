@@ -1,0 +1,9 @@
+<div class="flex">
+	<h2>Ordernumber</h2>
+	<h2>Order date</h2>
+	<h2>Order total</h2>
+	<h2>Payment method</h2>
+	<h2>User</h2>
+</div>
+
+<app-print-order *ngFor="let order of orders" [order]="order" (removeThisOrder)="removeOrder($event)"></app-print-order>

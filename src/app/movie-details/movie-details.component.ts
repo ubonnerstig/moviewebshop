@@ -24,11 +24,9 @@ export class MovieDetailsComponent implements OnInit {
 	}
 
 	addToCart(inputQuantity: number){
-		this.cartMovie = {
-			movie: this.modalMovie,
-			quantity: +inputQuantity
-		}
-		this.cartService.addToCart(this.cartMovie);
+		let addQuantity = +inputQuantity
+
+		this.cartService.addToCart(this.modalMovie, addQuantity);
 
 		this.closeModal();
 	}

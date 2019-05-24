@@ -1,0 +1,7 @@
+div.order_wrap {
+	border-bottom: 1px solid gray;
+}
+
+p {
+	flex: 0 0 20%;
+}

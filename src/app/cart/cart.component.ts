@@ -20,10 +20,19 @@ export class CartComponent implements OnInit {
 	}
 
 	ngOnInit() {
-	 this.cartContent =	this.cartService.getCart();
+
 		this.cartService.thisMovie$.subscribe(addedMovie => {
 			this.cartContent = addedMovie;
+			this.checkContentLength(this.cartContent.cartItems.length);
 		});
+		this.cartContent = this.cartService.getCart();
+
+		// this.cartService.thisBoolean$.subscribe(value => {
+		// 	this.emptyCart = value;
+		// });
+		// this.emptyCart = this.cartService.checkCartLength();
+	 	// this.emptyCart = this.cartService.checkCartLength();
+		console.log(this.cartContent);
 		this.checkContentLength(this.cartContent.cartItems.length);
 	}
 
@@ -43,14 +52,14 @@ export class CartComponent implements OnInit {
 		this.closeThisCart.emit(bool);
 	}
 
-	addToCart(cartItem: ICartItem){
-		this.cartService.addToCart(cartItem);
-		this.checkContentLength(this.cartContent.cartItems.length);
-	}
+	// addToCart(cartItem: ICartItem){
+	// 	this.cartService.addToCart(cartItem);
+	// 	this.checkContentLength(this.cartContent.cartItems.length);
+	// }
 
 	removeFromCart(cartItem: ICartItem){
 		this.cartService.removeFromCart(cartItem);
-		this.checkContentLength(this.cartContent.cartItems.length);
+		// this.checkContentLength(this.cartContent.cartItems.length);
 	}
 
 }

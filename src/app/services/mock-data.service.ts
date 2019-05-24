@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { IMovie } from '../interfaces/IMovie';
 import { IDataService } from '../interfaces/IDataService';
 import { Observable, of } from 'rxjs';
+import { IOrder } from '../interfaces/IOrder';
 
 @Injectable({
   providedIn: 'root'
@@ -51,7 +52,48 @@ export class MockDataService implements IDataService {
 		},
 	];
 
-	// searchedMovies: Array<IMovie> = [];
+	orders = [
+		{
+			id: 1,
+			companyId: 8,
+			created: "2019-04-01T00:00:00",
+			createdBy: "",
+			paymentMethod: "userChoice",
+			totalPrice: 1021,
+			status: 0,
+			orderRows: []
+		},
+		{
+			id:2,
+			companyId: 8,
+			created: "2019-04-01T00:00:00",
+			createdBy: "",
+			paymentMethod: "userChoice",
+			totalPrice: 1021,
+			status: 0,
+			orderRows: []
+		},
+		{
+			id:3,
+			companyId: 8,
+			created: "2019-04-01T00:00:00",
+			createdBy: "",
+			paymentMethod: "userChoice",
+			totalPrice: 1021,
+			status: 0,
+			orderRows: []
+		},
+		{
+			id:4,
+			companyId: 8,
+			created: "2019-04-01T00:00:00",
+			createdBy: "",
+			paymentMethod: "userChoice",
+			totalPrice: 1021,
+			status: 0,
+			orderRows: []
+		}
+	]
 
 	searchedMovies: IMovie[] = [];
 
@@ -66,6 +108,25 @@ export class MockDataService implements IDataService {
 			}
 		}
 		return of(this.searchedMovies);
+	}
+
+	getOrders(): Observable<any>{
+		return of(this.orders);
+	}
+
+	postOrder(order: IOrder): Observable<any>{
+		return of(this.orders.push(
+			{
+				id: 1,
+				companyId: 8,
+				created: "2019-04-01T00:00:00",
+				createdBy: order.user.email,
+				paymentMethod: "userChoice",
+				totalPrice: order.total,
+				status: 0,
+				orderRows: order.orderContent
+			}
+		));
 	}
   	constructor() { }
 }

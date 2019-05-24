@@ -1,0 +1,15 @@
+div.order_complete{
+	width: 100%;
+	text-align: center;
+	margin-top: 3rem;
+}
+
+h2 {
+	color: #3f3f3f;
+}
+
+.fa-laugh-beam {
+	font-size: 10rem;
+	/* color: #E64980; */
+	color: #fda1c1;
+}

@@ -8,6 +8,10 @@ describe('CartService', () => {
 
 	beforeEach(() => TestBed.configureTestingModule({}));
 
+	beforeEach(() => {
+		localStorage.clear();
+	  });
+
 	it('should be created', () => {
 		const service: CartService = TestBed.get(CartService);
 		expect(service).toBeTruthy();
@@ -16,18 +20,11 @@ describe('CartService', () => {
 	it('should add item to cart', () => {
 		const service: CartService = TestBed.get(CartService);
 		let backend: MockDataService = TestBed.get(MockDataService);
-		let cart = null;
 
-		localStorage.setItem("cart", JSON.stringify(cart));
-
-		cart = service.getCart();
+		let cart = service.getCart();
 		expect(cart.cartItems.length).toBe(0);
 
-		let cartItem: ICartItem = {
-			movie: backend.movies[0],
-			quantity: 1
-		}
-		service.addToCart(cartItem);
+		service.addToCart(backend.movies[0], 1);
 
 		cart = service.getCart();
 
@@ -41,12 +38,16 @@ describe('CartService', () => {
 
 		let cart = service.getCart();
 
-		expect(cart.cartItems.length).toBe(1);
-
 		let cartItem: ICartItem = {
 			movie: backend.movies[0],
-			quantity: 1
+			quantity: 1,
+			quantityPrice: backend.movies[0].price * 1
 		}
+
+		service.addToCart(backend.movies[0], 1);
+
+		expect(cart.cartItems.length).toBe(1);
+
 		service.removeFromCart(cartItem);
 
 		cart = service.getCart();
@@ -57,18 +58,11 @@ describe('CartService', () => {
 	it('should calculate total price of cart', () => {
 		const service: CartService = TestBed.get(CartService);
 		let backend: MockDataService = TestBed.get(MockDataService);
-		let cart = null;
 
-		localStorage.setItem("cart", JSON.stringify(cart));
-
-		cart = service.getCart();
+		let cart = service.getCart();
 		expect(cart.totalPrice).toBe(0);
 
-		let cartItem: ICartItem = {
-			movie: backend.movies[0],
-			quantity: 1
-		}
-		service.addToCart(cartItem);
+		service.addToCart(backend.movies[0], 1);
 
 		cart = service.getCart();
 

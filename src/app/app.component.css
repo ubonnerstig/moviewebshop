@@ -24,6 +24,12 @@ app-navbar {
 	width: 100%;
 }
 
+main {
+	max-width: 60rem;
+	margin: 0 auto;
+	margin-bottom: 5rem;
+}
+
 .main_margin {
 	margin-top:4rem;
 }
