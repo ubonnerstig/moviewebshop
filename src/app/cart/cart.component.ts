@@ -32,7 +32,7 @@ export class CartComponent implements OnInit {
 		// });
 		// this.emptyCart = this.cartService.checkCartLength();
 	 	// this.emptyCart = this.cartService.checkCartLength();
-		console.log(this.cartContent);
+
 		this.checkContentLength(this.cartContent.cartItems.length);
 	}
 

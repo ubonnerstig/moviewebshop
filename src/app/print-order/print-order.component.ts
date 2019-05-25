@@ -7,12 +7,39 @@ import { IOrder } from '../interfaces/IOrder';
   styleUrls: ['./print-order.component.css']
 })
 export class PrintOrderComponent implements OnInit {
-	@Input() order: IOrder;
+	@Input() order; //TYP??
 	@Output() removeThisOrder = new EventEmitter<IOrder>();
 
+	status: string;
+	payment: string;
+	icon: string;
 	constructor() { }
 
 	ngOnInit() {
+		console.log(this.order.status);
+		this.setStatus(this.order.status);
+		this.setPayment(this.order.paymentMethod);
+	}
+
+	setStatus(numberStatus: number){
+		if(numberStatus === 0){
+			this.status = "Received";
+		}else if(numberStatus === 1){
+			this.status = "Sent";
+		}
+	}
+
+	setPayment(orderPayment: string){
+		if(orderPayment === "paypal"){
+			this.payment = "PayPal";
+			this.icon = "fab fa-paypal";
+		}else if(orderPayment === "bitcoin"){
+			this.payment = "Bitcoin";
+			this.icon = "fab fa-bitcoin";
+		}else if(orderPayment === "icecream"){
+			this.payment = "Ice Cream";
+			this.icon = "fas fa-ice-cream";
+		}
 	}
 
 	removeOrder(){

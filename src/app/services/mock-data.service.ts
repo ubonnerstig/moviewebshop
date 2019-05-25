@@ -52,7 +52,7 @@ export class MockDataService implements IDataService {
 		},
 	];
 
-	orders = [
+	orders: IOrder[] = [
 		{
 			id: 1,
 			companyId: 8,
@@ -120,11 +120,11 @@ export class MockDataService implements IDataService {
 				id: 1,
 				companyId: 8,
 				created: "2019-04-01T00:00:00",
-				createdBy: order.user.email,
+				createdBy: order.createdBy,
 				paymentMethod: "userChoice",
-				totalPrice: order.total,
+				totalPrice: order.totalPrice,
 				status: 0,
-				orderRows: order.orderContent
+				orderRows: order.orderRows
 			}
 		));
 	}

@@ -39,7 +39,7 @@ input, select {
 	padding: 1rem .5rem .2rem .5rem;
 	border: none;
 	border-bottom: 1px solid gray;
-	display: block;
+	display: inline-block;
 	border-radius: 0;
 	width: 20rem;
 }
@@ -47,6 +47,16 @@ input, select {
 label {
 	display: block;
 	margin-top: 2rem;
+}
+
+span {
+	color: red;
+	font-size: 2rem;
+}
+
+.invalid {
+	transition: .5s;
+	background-color: #fcc0c0;
 }
 
 form > input:focus {

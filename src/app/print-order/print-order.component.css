@@ -1,7 +1,27 @@
+* {
+	border: 1px solid blue;
+}
 div.order_wrap {
 	border-bottom: 1px solid gray;
 }
 
 p {
-	flex: 0 0 20%;
+	flex: 0 0 10%;
+}
+
+.fab, .fas {
+	font-size: 1.2rem;
+}
+
+.fa-bitcoin {
+	color: #fdd03b;
+}
+
+.fa-paypal {
+	color: #c5f6fa;
+	/* #22b8cf; */
+}
+
+.fa-ice-cream {
+	color: #F285B8;
 }

@@ -32,7 +32,7 @@ export class DataService implements IDataService {
 	}
 
 	postOrder(order: IOrder): Observable<IOrder>{
-		return this.httpClient.post<IOrder>('https://medieinstitutet-wie-products.azurewebsites.net/api/orders', {'companyId':8, 'created':'2019-04-01T00:00:00', 'createdBy':order.user.email, 'paymentMethod':order.user.paymentMethod, 'totalPrice':order.total, 'status':0, 'orderRows':order.orderContent});
+		return this.httpClient.post<IOrder>('https://medieinstitutet-wie-products.azurewebsites.net/api/orders', order);
 	}
 
 	deleteOrder(orderId: number): Observable<IOrder>{

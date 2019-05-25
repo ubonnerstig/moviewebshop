@@ -16,8 +16,7 @@ export class CartService {
 
 	addToCart(addedMovie:IMovie, quantity){
 		let foundMovie = false;
-		console.log(addedMovie);
-		console.log(quantity);
+		console.log(this.cart);
 
 		for(let i = 0; i < this.cart.cartItems.length; i++){
 			if(this.cart.cartItems[i].movie.id === addedMovie.id){
@@ -40,6 +39,14 @@ export class CartService {
 			}
 		}
 		this.calculateCartSum();
+	}
+
+	clearCart(){
+		this.cart = {
+			cartItems: [],
+			totalPrice: 0
+		};
+		this.saveCart();
 	}
 
 	changeQuantity(changedMovie:ICartItem){
