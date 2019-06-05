@@ -57,7 +57,7 @@ export class MockDataService implements IDataService {
 			id: 1,
 			companyId: 8,
 			created: "2019-04-01T00:00:00",
-			createdBy: "",
+			createdBy: "hej",
 			paymentMethod: "userChoice",
 			totalPrice: 1021,
 			status: 0,
@@ -67,7 +67,7 @@ export class MockDataService implements IDataService {
 			id:2,
 			companyId: 8,
 			created: "2019-04-01T00:00:00",
-			createdBy: "",
+			createdBy: "hej",
 			paymentMethod: "userChoice",
 			totalPrice: 1021,
 			status: 0,
@@ -77,7 +77,7 @@ export class MockDataService implements IDataService {
 			id:3,
 			companyId: 8,
 			created: "2019-04-01T00:00:00",
-			createdBy: "",
+			createdBy: "hej",
 			paymentMethod: "userChoice",
 			totalPrice: 1021,
 			status: 0,
@@ -87,7 +87,7 @@ export class MockDataService implements IDataService {
 			id:4,
 			companyId: 8,
 			created: "2019-04-01T00:00:00",
-			createdBy: "",
+			createdBy: "hej",
 			paymentMethod: "userChoice",
 			totalPrice: 1021,
 			status: 0,
@@ -115,18 +115,20 @@ export class MockDataService implements IDataService {
 	}
 
 	postOrder(order: IOrder): Observable<any>{
-		return of(this.orders.push(
-			{
-				id: 1,
-				companyId: 8,
-				created: "2019-04-01T00:00:00",
-				createdBy: order.createdBy,
-				paymentMethod: "userChoice",
-				totalPrice: order.totalPrice,
-				status: 0,
-				orderRows: order.orderRows
-			}
-		));
+		// return of(this.orders.push(
+		// 	{
+		// 		id: 1,
+		// 		companyId: 8,
+		// 		created: "2019-04-01T00:00:00",
+		// 		createdBy: order.createdBy,
+		// 		paymentMethod: "userChoice",
+		// 		totalPrice: order.totalPrice,
+		// 		status: 0,
+		// 		orderRows: order.orderRows
+		// 	}
+		// ));
+
+		return of(this.orders.push(order));
 	}
   	constructor() { }
 }

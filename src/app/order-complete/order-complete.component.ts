@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OrderCompleteService } from '../services/order-complete.service';
 import { IOrder } from '../interfaces/IOrder';
+import { IUser } from '../interfaces/IUser';
 
 @Component({
   selector: 'app-order-complete',
@@ -10,6 +11,7 @@ import { IOrder } from '../interfaces/IOrder';
 })
 export class OrderCompleteComponent implements OnInit {
 	order: IOrder;
+	user: IUser;
 	constructor(private orderComplete: OrderCompleteService, private router: Router) { }
 
 	ngOnInit() {

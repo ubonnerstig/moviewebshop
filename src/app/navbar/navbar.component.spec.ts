@@ -20,16 +20,17 @@ describe('NavbarComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+	fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-//   it('should toggle cart visability', () => {
-// 	expect(component.cartVisibility).toBeFalsy();
-// 	component.toggleCart();
-// 	expect(component.cartVisibility).toBeTruthy();
-//   });
+  it('should toggle cart visability', () => {
+	component.checkCartQty(0);
+	expect(component.cartVisibility).toBeFalsy();
+	component.toggleCart(true);
+	expect(component.cartVisibility).toBeTruthy();
+  });
 });

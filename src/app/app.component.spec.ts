@@ -5,6 +5,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CartComponent } from './cart/cart.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PrintCartItemComponent } from './print-cart-item/print-cart-item.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -12,7 +13,9 @@ describe('AppComponent', () => {
       imports: [
 		RouterTestingModule,
 		FormsModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		HttpClientModule,
+		RouterTestingModule
       ],
       declarations: [
 		AppComponent,

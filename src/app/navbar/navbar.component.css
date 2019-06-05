@@ -64,6 +64,24 @@ button.cart {
 	border: none;
 }
 
+span.number_of_cart_items {
+	position: absolute;
+	text-align: center;
+	font-size: 1.3rem;
+	border: 1px solid transparent;
+	font-weight: 400;
+	color: #ffffff;
+	background-color: rgb(253, 161, 193, 0.8);
+	padding: .2rem;
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: 3rem;
+	margin-top: 0rem;
+	margin-left: -.2rem;
+	align-self: center;
+	vertical-align: middle;
+}
+
 .cart_wrap {
 	width: 22rem;
 	position: absolute;
@@ -82,8 +100,6 @@ button.cart {
     transform-origin: 50% 0;
     transition: all 0s cubic-bezier(.23,1,.32,1);
 	visibility: hidden;
-	
-
 }
 
 .cart_visible { 

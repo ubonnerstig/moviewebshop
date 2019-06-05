@@ -50,10 +50,34 @@ div.info_header > p {
 	max-width: 25%;
 }
 
-div.info_footer > button {
+div.info_footer {
+	width: 100%;
+	text-align: right;
+	align-self: center;
+}
+/* div.info_footer > button {
 	height: 100%;
 }
 
 div.info_footer > button:hover {
 	text-decoration: underline;
+} */
+
+input, button {
+	text-align: center;
+	font-size: 1rem;
+	border: none;
+	width: 1.2rem;
+	margin: 0;
+	padding: 0;
+}
+
+input {
+	font-size: 1.2rem;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }

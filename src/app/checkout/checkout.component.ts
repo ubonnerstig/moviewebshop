@@ -13,6 +13,8 @@ import * as moment from 'moment';
 import { Constants } from '../interfaces/Constans';
 import { Router } from '@angular/router';
 import { OrderCompleteService } from '../services/order-complete.service';
+import { IUser } from '../interfaces/IUser';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-checkout',
@@ -40,7 +42,6 @@ export class CheckoutComponent implements OnInit {
 		paymentMethod:['', Validators.required]
 	});
 
-
 	constructor(private cartService: CartService, private fb: FormBuilder, private http: DataService, private router: Router, private completeOrder: OrderCompleteService) { }
 
 	ngOnInit() {
@@ -54,10 +55,12 @@ export class CheckoutComponent implements OnInit {
 		this.cartToOrder = this.mapCart();
 	}
 
-	mapCart(){
+	mapCart(): IOrderItem[]{
 		return this.cartContent.cartItems.map((item: ICartItem) => {
-			console.log(item.movie.id);
-			return { productId: item.movie.id, product: {name: item.movie.name, price: item.movie.price }, amount: item.quantity};
+			return { 
+				productId: item.movie.id, 
+				amount: item.quantity
+			};
 		});
 	}
 
@@ -74,20 +77,14 @@ export class CheckoutComponent implements OnInit {
 	}
 
 	removeFromCart(cartItem: ICartItem){
-		// console.log(cartItem.movie);
 		this.cartService.removeFromCart(cartItem);
-		// this.checkContentLength(this.cartContent.cartItems.length);
 	}
 
 	changeQuantity(cartItem: ICartItem){
-		// console.log(cartItem);
 		this.cartService.changeQuantity(cartItem);
 	}
 
 	validateOrder(){
-		console.log(this.orderForm);
-		console.log(this.orderForm.controls.firstName.valid);
-		console.log(this.orderForm.controls.paymentMethod.valid);
 		if(this.orderForm.controls.firstName.valid && this.orderForm.controls.paymentMethod.valid){
 			this.invalidName = !this.orderForm.controls.firstName.valid;
 			this.invalidPayment = !this.orderForm.controls.paymentMethod.valid;
@@ -99,46 +96,38 @@ export class CheckoutComponent implements OnInit {
 	}
 
 	placeOrder(){
-		console.log("yay");
 		this.order = {
 			id: 0,
 			companyId: 8,
 			created: this.date,
-			orderRows: this.cartToOrder,
 			createdBy: this.orderDetails.value.firstName,
 			paymentMethod: this.orderDetails.value.paymentMethod,
+			totalPrice: this.cartContent.totalPrice,
 			status: 0,
-			totalPrice: this.cartContent.totalPrice
+			orderRows: this.cartToOrder
 		}
-		console.log(this.cartToOrder);
+		
+		// {
+		// 	firstName: this.orderDetails.value.firstName,
+		// 	lastName:  this.orderDetails.value.lastName,
+		// 	address: {
+		// 		street: this.orderDetails.value.street,
+		// 		postal: this.orderDetails.value.postal,
+		// 		city: this.orderDetails.value.city
+		// 	},
+		// 	email:  this.orderDetails.value.email
+		// },
+		// this.http.postOrder(this.order).subscribe();
 
-				// firstName: string;this.date,
-		// lastName: string;
-		// address: {
-		// 	street: string;
-		// 	postal: number;
-		// 	city: string;
-		// };
-		// email: string;
-
-		// console.log(this.order);
-		// this.http.postOrder(this.order);
-
-		// this.http.postOrder(this.order).subscribe(
-		// 	(response)=>{
-		// 	console.log('response from post data is ', response);
-		// 	console.log('username', response.createdBy);
-		// 	console.log('ordernumber', response.id);
-
-		// 	this.completeOrder.placeOrder(response);
-		// 	this.cartService.clearCart();
-		// 	this.router.navigate(["/ordercomplete"]);
+		this.http.postOrder(this.order).subscribe(
+			(response)=>{
+			this.completeOrder.placeOrder(response);
+			this.cartService.clearCart();
+			this.router.navigate(["/ordercomplete"]);
 			
-		//   },(error)=>{
-		// 	console.log('error during post is ', error.status)//400
-		// 	alert("Something went wrong, please try again");
-		//   }
-		// )
+			},(error)=>{
+				alert("Something went wrong, please try again");
+			}
+		)
 	}
-
 }

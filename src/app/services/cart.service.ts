@@ -16,7 +16,6 @@ export class CartService {
 
 	addToCart(addedMovie:IMovie, quantity){
 		let foundMovie = false;
-		console.log(this.cart);
 
 		for(let i = 0; i < this.cart.cartItems.length; i++){
 			if(this.cart.cartItems[i].movie.id === addedMovie.id){
@@ -29,7 +28,7 @@ export class CartService {
 		if (!foundMovie) {
 			this.cart.cartItems.push({movie: addedMovie, quantity: quantity, quantityPrice: addedMovie.price * quantity});
 		}
-		this.calculateCartSum();
+		this.calculateTotalPriceAndQty();
 	}
 
 	removeFromCart(removedMovie:ICartItem){
@@ -38,12 +37,13 @@ export class CartService {
 				this.cart.cartItems.splice(i, 1);
 			}
 		}
-		this.calculateCartSum();
+		this.calculateTotalPriceAndQty();
 	}
 
 	clearCart(){
 		this.cart = {
 			cartItems: [],
+			totalQty: 0,
 			totalPrice: 0
 		};
 		this.saveCart();
@@ -56,25 +56,20 @@ export class CartService {
 				this.cart.cartItems[i].quantityPrice = this.cart.cartItems[i].quantity * this.cart.cartItems[i].movie.price;
 			}
 		}
-		this.calculateCartSum();
+		this.calculateTotalPriceAndQty();
 	}
 
-	calculateCartSum(){
+	calculateTotalPriceAndQty(){
 		let sum = 0;
+		let qty = 0;
 		for(let i = 0; i < this.cart.cartItems.length; i++){
-			// sum += this.cart.cartItems[i].movie.price * this.cart.cartItems[i].quantity; 
 			sum += this.cart.cartItems[i].quantityPrice;
+			qty += this.cart.cartItems[i].quantity;
 		}
 		this.cart.totalPrice = sum;
-		console.log(sum);
+		this.cart.totalQty = qty;
 		this.saveCart();
 	}
-
-	// calculateQuantitySum(movie, quantity){
-	// 	let cartMovie = this.cart.cartItems.find(item => item.movie.id === movie.id);
-	// 	console.log(movie.price * (cartMovie.quantity + quantity));
-	// 	return movie.price * (cartMovie.quantity + quantity);
-	// }
 
 	saveCart(){
 		localStorage.setItem("cart", JSON.stringify(this.cart));
@@ -87,6 +82,7 @@ export class CartService {
 		if(this.cart == null){
 			this.cart = {
 				cartItems: [],
+				totalQty: 0,
 				totalPrice: 0
 			};
 		}

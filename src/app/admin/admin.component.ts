@@ -13,17 +13,12 @@ export class AdminComponent implements OnInit {
   	constructor(private http: DataService) { }
 
   	ngOnInit() {
-	  	// this.http.getOrders().subscribe(orders => {
-		// 	this.orders = orders;
-		// 	console.log(this.orders);
-		// });
 		this.updateOrders();
 	}
 
 	updateOrders(){
 		this.http.getOrders().subscribe(orders => {
 			this.orders = orders;
-			console.log(this.orders);
 		});
 	}
 	
@@ -31,13 +26,10 @@ export class AdminComponent implements OnInit {
 		console.log(order.id);
 
 		this.http.deleteOrder(order.id).subscribe((response)=>{
-				console.log('response from post data is ', response);
 				this.updateOrders();
-			  },(error)=>{
-				console.log('error during post is ', error)
-			  })
+			},(error)=>{
+				alert("Something went wrong, try again later");
+			});
 
-			  this.http.deleteOrder(order.id);
 	}
-
 }

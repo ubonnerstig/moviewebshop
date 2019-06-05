@@ -9,7 +9,7 @@ import { ICartItem } from '../interfaces/ICartItem';
 export class PrintOrderItemComponent implements OnInit {
 	@Input() cartItem: ICartItem;
 	@Output() removeItem = new EventEmitter<ICartItem>();
-	@Output() changeItemQuantity = new EventEmitter<any>();
+	@Output() changeItemQuantity = new EventEmitter<ICartItem>();
 
 	constructor() { }
 

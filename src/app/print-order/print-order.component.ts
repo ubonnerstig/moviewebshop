@@ -7,7 +7,7 @@ import { IOrder } from '../interfaces/IOrder';
   styleUrls: ['./print-order.component.css']
 })
 export class PrintOrderComponent implements OnInit {
-	@Input() order; //TYP??
+	@Input() order: IOrder; 
 	@Output() removeThisOrder = new EventEmitter<IOrder>();
 
 	status: string;
@@ -16,7 +16,6 @@ export class PrintOrderComponent implements OnInit {
 	constructor() { }
 
 	ngOnInit() {
-		console.log(this.order.status);
 		this.setStatus(this.order.status);
 		this.setPayment(this.order.paymentMethod);
 	}

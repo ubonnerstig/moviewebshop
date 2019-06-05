@@ -4,5 +4,6 @@
 		<button type="submit">Search</button>
 	</form>
 	<button class="cart" (mouseover)="toggleCart(true)" (mouseleave)="toggleCart(false)"><i class="fas fa-shopping-cart"></i></button>
-	<app-cart (mouseover)="toggleCart(true)" (mouseleave)="toggleCart(false)" class="cart_wrap" [class.cart_visible]="cartVisibility" [class.cart_invisible]="!cartVisibility" [cartExpanded]="cartVisibility" (closeThisCart)="toggleCart($event)"></app-cart>
+	<span *ngIf="cartQtyVisibility" class="number_of_cart_items" (mouseover)="toggleCart(true)" (mouseleave)="toggleCart(false)">{{ cartQty }}</span>
+	<app-cart (mouseover)="toggleCart(true)" (mouseleave)="toggleCart(false)" class="cart_wrap" [class.cart_visible]="cartVisibility" [class.cart_invisible]="!cartVisibility" [cartExpanded]="cartVisibility" (closeThisCart)="toggleCart($event)" (cartQty)="checkCartQty($event)"></app-cart>
 </nav>

@@ -20,6 +20,7 @@ export class MovieDetailsComponent implements OnInit {
 	}
 
 	closeModal(){
+		console.log(this.modalMovie);
 		this.closeThisModal.emit();
 	}
 

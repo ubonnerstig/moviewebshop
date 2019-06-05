@@ -1,4 +1,5 @@
 import { IOrderItem } from './IOrderItem';
+import { IUser } from './IUser';
 
 export interface IOrder {
 	id: number;
@@ -6,16 +7,6 @@ export interface IOrder {
 	created: string;
 	orderRows: IOrderItem[];
 	createdBy: string;
-	// {
-	// 	firstName: string;
-	// 	lastName: string;
-	// 	address: {
-	// 		street: string;
-	// 		postal: number;
-	// 		city: string;
-	// 	};
-	// 	email: string;
-	// };
 	paymentMethod: string;
 	status: number;
 	totalPrice: number;

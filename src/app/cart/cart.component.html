@@ -10,7 +10,7 @@
 			</p>
 			<i class="fas fa-dizzy"></i>
 		</div>
-		<app-print-cart-item class="flex_row" *ngFor="let cartItem of cartContent.cartItems" [cartItem]="cartItem" (removeItem)="removeFromCart($event)"></app-print-cart-item>
+		<app-print-cart-item class="flex_row" *ngFor="let cartItem of cartContent.cartItems" [cartItem]="cartItem" (removeItem)="removeFromCart($event)" (changeItemQuantity)="changeQuantity($event)"></app-print-cart-item>
 	</div>
 	<div class="cart_footer" [class.cart_footer_expanded]="cartExpanded">
 		<div *ngIf="!emptyCart" class="col_full">
