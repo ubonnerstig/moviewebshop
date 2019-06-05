@@ -11,7 +11,6 @@ import { ICart } from '../interfaces/ICart';
 export class CartComponent implements OnInit {
 	@Input() cartExpanded: boolean;
 	@Output() closeThisCart = new EventEmitter<boolean>();
-	@Output() cartQty = new EventEmitter<number>();
 
 	cartMovie: ICartItem;
 	cartContent: ICart;
@@ -24,11 +23,9 @@ export class CartComponent implements OnInit {
 
 		this.cartService.thisMovie$.subscribe(addedMovie => {
 			this.cartContent = addedMovie;
-			// this.cartQty.emit(addedMovie.totalQty);
 			this.checkContentLength(this.cartContent.cartItems.length);
 		});
 		this.cartContent = this.cartService.getCart();
-		// this.cartQty.emit(this.cartContent.totalQty);
 
 		// this.cartService.thisBoolean$.subscribe(value => {
 		// 	this.emptyCart = value;

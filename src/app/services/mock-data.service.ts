@@ -18,7 +18,9 @@ export class MockDataService implements IDataService {
 			imageUrl: "https://fashionjitsudotcom.files.wordpress.com/2017/10/screen-shot-2017-09-25-at-2-52-46-pm.png",
 			year: 1999,
 			added: "datum",
-			productCategory:[]
+			productCategory:[{
+				categoryId: 1
+			}]
 		},
 		{
 			id: 2,
@@ -28,7 +30,9 @@ export class MockDataService implements IDataService {
 			imageUrl: "https://fashionjitsudotcom.files.wordpress.com/2017/10/screen-shot-2017-09-25-at-2-52-46-pm.png",
 			year: 1999,
 			added: "datum",
-			productCategory:[]
+			productCategory:[{
+				categoryId: 1
+			}]
 		},
 		{
 			id: 3,
@@ -38,7 +42,9 @@ export class MockDataService implements IDataService {
 			imageUrl: "https://fashionjitsudotcom.files.wordpress.com/2017/10/screen-shot-2017-09-25-at-2-52-46-pm.png",
 			year: 1999,
 			added: "datum",
-			productCategory:[]
+			productCategory:[{
+				categoryId: 1
+			}]
 		},
 		{
 			id: 4,
@@ -48,7 +54,9 @@ export class MockDataService implements IDataService {
 			imageUrl: "https://fashionjitsudotcom.files.wordpress.com/2017/10/screen-shot-2017-09-25-at-2-52-46-pm.png",
 			year: 1999,
 			added: "datum",
-			productCategory:[]
+			productCategory:[{
+				categoryId: 1
+			}]
 		},
 	];
 
@@ -115,19 +123,6 @@ export class MockDataService implements IDataService {
 	}
 
 	postOrder(order: IOrder): Observable<any>{
-		// return of(this.orders.push(
-		// 	{
-		// 		id: 1,
-		// 		companyId: 8,
-		// 		created: "2019-04-01T00:00:00",
-		// 		createdBy: order.createdBy,
-		// 		paymentMethod: "userChoice",
-		// 		totalPrice: order.totalPrice,
-		// 		status: 0,
-		// 		orderRows: order.orderRows
-		// 	}
-		// ));
-
 		return of(this.orders.push(order));
 	}
   	constructor() { }

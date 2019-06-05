@@ -7,11 +7,17 @@ import { Subject } from 'rxjs';
 export class SearchService {
 
 	private searchSource = new Subject<string>();
+	private categorySource = new Subject<string>();
 
 	searchedString$ = this.searchSource.asObservable();
+	chosenCategory$ = this.categorySource.asObservable();
 
 	searchThis(movieName:string){
 		this.searchSource.next(movieName);
+	}
+
+	getCategory(movieCategory:string){
+		this.categorySource.next(movieCategory);
 	}
 
   	constructor() { }

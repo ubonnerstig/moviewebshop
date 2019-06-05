@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { SearchService } from '../services/search.service';
 import { CartService } from '../services/cart.service';
+import { Data } from '@angular/router';
+import { DataService } from '../services/data.service';
+import { ICategory } from '../interfaces/ICategory';
+
 
 @Component({
   selector: 'app-navbar',
@@ -12,13 +16,20 @@ export class NavbarComponent implements OnInit {
 	cartVisibility: boolean = false;
 	cartQty: number;
 	cartQtyVisibility: boolean;
-	searchForm: FormGroup = this.fb.group({
-		movieName:['']
-	});
+	categories: ICategory[];
+	// categoryForm: FormGroup = this.fb.group({
+	// 	selectedCategory:['']
+	// });
 
-	constructor(private fb: FormBuilder, private searchService: SearchService, private cartService: CartService) {}
+	selectedCategory = new FormControl('All');
+
+	constructor(private fb: FormBuilder, private searchService: SearchService, private cartService: CartService, private dataService: DataService) {}
 
 	ngOnInit() {
+		this.dataService.getCategories().subscribe(categories => {
+			this.categories = categories;
+		});
+		
 		this.cartService.thisMovie$.subscribe(addedMovie => {
 			this.cartQty = addedMovie.totalQty;
 			this.checkCartQty(addedMovie.totalQty);
@@ -28,12 +39,19 @@ export class NavbarComponent implements OnInit {
 		this.checkCartQty(this.cartQty);
 	}
 
-	get movieName(){
-		return this.searchForm.get('movieName') as FormControl; 
+	get category(){
+		return this.selectedCategory as FormControl; 
 	}
 
-	movieSearch(){
-		this.searchService.searchThis(this.movieName.value);
+	// onChanges(): void {
+	// 	console.log(this.category.value);
+	// 	this.category.value;
+	// }
+
+	movieSearch(search){
+		console.log(search);
+		// this.searchService.searchThis(this.movieName.value);
+		this.searchService.searchThis(search);
 	}
 
 	toggleCart(visibility: boolean){
@@ -47,5 +65,9 @@ export class NavbarComponent implements OnInit {
 		}else{
 			this.cartQtyVisibility = false;
 		}
+	}
+
+	categorySearch(){
+		this.searchService.getCategory(this.category.value);
 	}
 }
