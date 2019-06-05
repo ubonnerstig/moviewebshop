@@ -1,3 +1,5 @@
-<p>
-  order-complete works!
-</p>
+<div *ngIf="order" class="order_complete">
+	<i class="far fa-laugh-beam"></i>
+	<h2>Thank you for your order, {{ order.createdBy }}!</h2>
+	<p>Your ordernumber is #{{ order.id }}.</p>
+</div>

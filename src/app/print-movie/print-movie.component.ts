@@ -25,11 +25,13 @@ export class PrintMovieComponent implements OnInit {
 
 	addToCart(event: Event){
 		event.stopPropagation();
-		this.cartMovie = {
-			movie: this.movie,
-			quantity: 1
-		}
-		this.cartService.addToCart(this.cartMovie);
+		// let addQuantity = 1;
+		// this.cartMovie = {
+		// 	movie: this.movie,
+		// 	quantity: addQuantity,
+		// 	quantityPrice: this.cartService.calculateQuantitySum(this.movie, addQuantity)
+		// }
+		this.cartService.addToCart(this.movie, 1);
 	}
 
 }

@@ -9,10 +9,24 @@ import { ICartItem } from '../interfaces/ICartItem';
 export class PrintOrderItemComponent implements OnInit {
 	@Input() cartItem: ICartItem;
 	@Output() removeItem = new EventEmitter<ICartItem>();
+	@Output() changeItemQuantity = new EventEmitter<ICartItem>();
 
 	constructor() { }
 
 	ngOnInit() {
+	}
+
+	removeFromCart(){
+		this.removeItem.emit(this.cartItem);
+	}
+
+	changeQuantity(quantity: number){
+		this.cartItem.quantity = +quantity;
+		if(this.cartItem.quantity > 0){
+			this.changeItemQuantity.emit(this.cartItem);
+		}else{
+			this.removeFromCart();
+		}
 	}
 
 }

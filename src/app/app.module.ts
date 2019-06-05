@@ -15,6 +15,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { PrintCartItemComponent } from './print-cart-item/print-cart-item.component';
 import { OrderCompleteComponent } from './order-complete/order-complete.component';
 import { PrintOrderItemComponent } from './print-order-item/print-order-item.component';
+import { AdminComponent } from './admin/admin.component';
+import { PrintOrderComponent } from './print-order/print-order.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { PrintOrderItemComponent } from './print-order-item/print-order-item.com
 	PageNotFoundComponent,
 	PrintCartItemComponent,
 	OrderCompleteComponent,
-	PrintOrderItemComponent
+	PrintOrderItemComponent,
+	AdminComponent,
+	PrintOrderComponent
   ],
   imports: [
     BrowserModule,

@@ -7,14 +7,17 @@
 			{{ cartItem.movie.name }} 
 		</h2>
 		<p>
-			{{ cartItem.movie.price }} kr
+			{{ cartItem.quantityPrice }} kr
 		</p>
 	</div>
 	<div class="info_body">
 		Qty:  {{ cartItem.quantity }} 
 	</div>
 	<div class="info_footer">
-		<button (click)="removeFromCart()">Remove from cart</button>
+		<button (click)="changeQuantity(quantity.value-1)"><i class="fas fa-minus"></i></button>
+		<input type="number" #quantity value="{{cartItem.quantity}}" (keyup.enter)="changeQuantity(quantity.value)" />
+		<button (click)="changeQuantity(quantity.value-(-1))"><i class="fas fa-plus"></i></button>
+		<button (click)="removeFromCart()"><i class="fas fa-trash-alt"></i></button>
 	</div>
 </div>
 

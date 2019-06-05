@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { SearchService } from '../services/search.service';
-import { delay } from 'q';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,14 +10,22 @@ import { delay } from 'q';
 })
 export class NavbarComponent implements OnInit {
 	cartVisibility: boolean = false;
+	cartQty: number;
+	cartQtyVisibility: boolean;
 	searchForm: FormGroup = this.fb.group({
 		movieName:['']
 	});
 
-	constructor(private fb: FormBuilder, private searchService: SearchService) {}
+	constructor(private fb: FormBuilder, private searchService: SearchService, private cartService: CartService) {}
 
 	ngOnInit() {
-
+		this.cartService.thisMovie$.subscribe(addedMovie => {
+			this.cartQty = addedMovie.totalQty;
+			this.checkCartQty(addedMovie.totalQty);
+		});
+		let qty = this.cartService.getCart();
+		this.cartQty = qty.totalQty;
+		this.checkCartQty(this.cartQty);
 	}
 
 	get movieName(){
@@ -28,19 +36,16 @@ export class NavbarComponent implements OnInit {
 		this.searchService.searchThis(this.movieName.value);
 	}
 
-	// delay(ms: number) {
-	// 	return new Promise( resolve => setTimeout(resolve, ms) );
-	// }
-
-	toggleCart(visibility){
+	toggleCart(visibility: boolean){
 		this.cartVisibility = visibility;
+	}
 
-		// if(!visibility){
-		// 	await delay(500);
-		// 	this.cartVisibility = visibility;
-		// }else{
-		// 	await delay(5);
-		// 	this.cartVisibility = visibility;
-		// }
+	checkCartQty(quantity: number){
+		this.cartQty = quantity;
+		if(quantity > 0){
+			this.cartQtyVisibility = true;
+		}else{
+			this.cartQtyVisibility = false;
+		}
 	}
 }

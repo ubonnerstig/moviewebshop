@@ -14,6 +14,7 @@ export class AppComponent {
 	bodyScroll: boolean;
 	fixedNavBar: boolean;
 	hideShowNav: boolean;
+	href: string;
 
 	constructor(scrollService: BodyScrollService, private router:Router, private route:ActivatedRoute) {
 		scrollService.toggleScroll$.subscribe(
@@ -29,11 +30,12 @@ export class AppComponent {
 		// this.router.events.subscribe((val) => {
 		// 	// console.log(val instanceof NavigationEnd) 
 		// 	console.log(val);
-		// 	console.log(Event:NavigationEnd.url);
+		// 	// console.log(Event:NavigationEnd.url);
 		// });
 		// this.router.events.forEach((event) => {
 		// 	if(event instanceof NavigationEnd) {
-		// 		console.log(event.url.replace("/",""));
+		// 		console.log(event.url);
+		// 		// console.log(event.url.replace("/",""));
 		// 		if(event.url === "/"){
 		// 			this.hideShowNav = false;
 		// 		}else{

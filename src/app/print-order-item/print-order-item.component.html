@@ -1,7 +1,20 @@
 <div *ngIf="cartItem" class="flex">
-<p>
-  {{ cartItem.movie.name }}
-</p>
-
-<button><i class="fas fa-minus"></i></button><input type="number" #quantity value="{{cartItem.quantity}}" /><button><i class="fas fa-plus"></i></button><button><i class="fas fa-trash-alt"></i></button>
+	<div class="img_container">
+		<img src="{{ cartItem.movie.imageUrl }}" />
+	</div>
+	<div class="movie_info">
+		<h3>
+			{{ cartItem.movie.name }}
+		</h3>
+	
+		<p>
+			{{ cartItem.movie.price }}/st | {{ cartItem.quantityPrice }} kr
+		</p>
+	</div>
+	<div class="change_quantity">
+		<button (click)="changeQuantity(quantity.value-1)"><i class="fas fa-minus"></i></button>
+		<input type="number" #quantity value="{{cartItem.quantity}}" (keyup.enter)="changeQuantity(quantity.value)" />
+		<button (click)="changeQuantity(quantity.value-(-1))"><i class="fas fa-plus"></i></button>
+		<button (click)="removeFromCart()"><i class="fas fa-trash-alt"></i></button>	
+	</div>
 </div>
