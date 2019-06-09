@@ -7,8 +7,6 @@ import { Component } from '@angular/core';
 describe('MovieDetailsComponent', () => {
 	let testComponent: TestHostComponent;
 	let testFixture: ComponentFixture<TestHostComponent>;
-//   let component: MovieDetailsComponent;
-//   let fixture: ComponentFixture<MovieDetailsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -21,10 +19,6 @@ describe('MovieDetailsComponent', () => {
 	testFixture = TestBed.createComponent(TestHostComponent);
 	testComponent = testFixture.componentInstance;
 	testFixture.detectChanges();
-
-    // fixture = TestBed.createComponent(MovieDetailsComponent);
-    // component = fixture.componentInstance;
-    // fixture.detectChanges();
   });
 
   it('should create', () => {
@@ -32,15 +26,13 @@ describe('MovieDetailsComponent', () => {
   });
 
   it('should set value to inputdecorator', () => {
-		testComponent.setInput({ id: 1, name: 'Batcat the cat bat', description: 'lol', price: 122,imageUrl: 'https://fashionjitsudotcom.files.wordpress.com/2017/10/screen-shot-2017-09-25-at-2-52-46-pm.png',year: 1999,added: 'datum',productCategory:[]});
-		testFixture.detectChanges();
+		testComponent.setInput({ id: 1, name: 'Batcat the cat bat', description: 'lol', price: 122,imageUrl: 'https://fashionjitsudotcom.files.wordpress.com/2017/10/screen-shot-2017-09-25-at-2-52-46-pm.png',year: 1999,added: 'datum',productCategory:[{categoryId: 1}]});
     	expect(testComponent.modalMovie.name).toBe('Batcat the cat bat');
   });
 
   @Component({
 		selector: `host-component`,
-		template: `<app-movie-details [class.display_modal]="modalVisability" [modalMovie]="{ id: 1, name: 'Batcat the cat bat', description: 'lol', price: 122,imageUrl: 'https://fashionjitsudotcom.files.wordpress.com/2017/10/screen-shot-2017-09-25-at-2-52-46-pm.png',year: 1999,added: 'datum',productCategory:[]}" (click)="toggleModal()"></app-movie-details>`
-		//template: `<app-movie-details [modalMovie]="movie"></app-movie-details>`
+		template: `<app-movie-details [class.display_modal]="modalVisability" [modalMovie]="{ id: 1, name: 'Batcat the cat bat', description: 'lol', price: 122,imageUrl: 'https://fashionjitsudotcom.files.wordpress.com/2017/10/screen-shot-2017-09-25-at-2-52-46-pm.png',year: 1999,added: 'datum',productCategory:[{categoryId: 1}]}" (click)="toggleModal()"></app-movie-details>`
 	})
 	class TestHostComponent {
 		modalMovie: IMovie;

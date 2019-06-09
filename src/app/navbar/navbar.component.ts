@@ -43,14 +43,7 @@ export class NavbarComponent implements OnInit {
 		return this.selectedCategory as FormControl; 
 	}
 
-	// onChanges(): void {
-	// 	console.log(this.category.value);
-	// 	this.category.value;
-	// }
-
-	movieSearch(search){
-		console.log(search);
-		// this.searchService.searchThis(this.movieName.value);
+	movieSearch(search: string){
 		this.searchService.searchThis(search);
 	}
 

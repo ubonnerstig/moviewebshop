@@ -29,16 +29,11 @@ export class HomeComponent implements OnInit {
 			this.movies = movies;
 			this.modalMovie = this.movies[0];
 		});
-
-		console.log(this.dataService);
-
 		this.searchService.chosenCategory$.subscribe(this.handleCategory);
-
 		this.searchService.searchedString$.subscribe(this.handleSearch);
 	}
 
 	handleSearch(movieSearch: string){	
-		console.log(this.dataService);
 		this.dataService.getSearch(movieSearch).subscribe(searchedMovies => {
 			this.movies = searchedMovies;
 			this.moviesFound(this.movies.length);

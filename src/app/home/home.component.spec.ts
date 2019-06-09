@@ -50,21 +50,18 @@ describe('HomeComponent', () => {
 	});
 
 	it('should recieve movie from child', () => {
-		component.movieInfo({ id: 1, name: 'Batcat the cat bat', description: 'lol', price: 122,imageUrl: 'https://fashionjitsudotcom.files.wordpress.com/2017/10/screen-shot-2017-09-25-at-2-52-46-pm.png',year: 1999,added: 'datum',productCategory:[]});
+		component.movieInfo({ id: 1, name: 'Batcat the cat bat', description: 'lol', price: 122,imageUrl: 'https://fashionjitsudotcom.files.wordpress.com/2017/10/screen-shot-2017-09-25-at-2-52-46-pm.png',year: 1999,added: 'datum',productCategory:[{categoryId: 1}]});
 		expect(component.modalMovie.name).toBe('Batcat the cat bat');
 	});
 
 	it('should add movies to search array depending on search term', () => {
 		component.handleSearch("One");
-
 		expect(component.movies[0].name).toBe("One");
 	});
 
 	it('should toggle noMovies from false to true if no movies are found', () => {
 		expect(component.noMovies).toBeFalsy();
-
 		component.handleSearch("None");
-
 		expect(component.noMovies).toBeTruthy();
 	});
 

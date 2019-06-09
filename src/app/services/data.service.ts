@@ -59,8 +59,6 @@ export class DataService implements IDataService {
 		if(id === "All"){
 			return this.movies;
 		}else{
-			console.log(+id);
-			console.log(this.savedCategories);
 			for(let i = 0; i < this.savedCategories.length; i++){
 				if(this.savedCategories[i].id === +id){
 					return this.savedCategories[i].movies;

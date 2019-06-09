@@ -21,10 +21,6 @@ describe('PrintMovieComponent', () => {
 		testFixture = TestBed.createComponent(TestHostComponent);
 		testComponent = testFixture.componentInstance;
 		testFixture.detectChanges();
-
-		// fixture = TestBed.createComponent(PrintMovieComponent);
-		// component = fixture.componentInstance;
-		// fixture.detectChanges();
 	});
 
 	it('should create', () => {
@@ -32,50 +28,14 @@ describe('PrintMovieComponent', () => {
 	});
 
 	it('should set value to inputdecorator', () => {
-		testComponent.setInput({ id: 1, name: 'Batcat the cat bat', description: 'lol', price: 122,imageUrl: 'https://fashionjitsudotcom.files.wordpress.com/2017/10/screen-shot-2017-09-25-at-2-52-46-pm.png',year: 1999,added: 'datum',productCategory:[]});
+		testComponent.setInput({ id: 1, name: 'Batcat the cat bat', description: 'lol', price: 122,imageUrl: 'https://fashionjitsudotcom.files.wordpress.com/2017/10/screen-shot-2017-09-25-at-2-52-46-pm.png',year: 1999,added: 'datum',productCategory:[{categoryId: 8}]});
 		testFixture.detectChanges();
 		expect(testComponent.movie.name).toBe('Batcat the cat bat');
 	});
 
-	// describe('movieInfo', () => {
-	// 	it('should emit on click', () => {
-	// 		const fixture = TestBed.createComponent(PrintMovieComponent);
-	// 		const component = fixture.componentInstance; 
-	// 		spyOn(component.thisMovieInfo, 'emit');
-	
-	// 		const nativeElement = testFixture.nativeElement;
-	// 		const div = nativeElement.querySelector('div');
-			
-	// 		console.log(div);
-	// 		div.dispatchEvent(new Event('click'));
-	
-	// 		//expect(component.thisMovieInfo.emit).toHaveBeenCalled();
-	
-	// 		// component.getMovieInfo();
-	
-	// 		// console.log(component.movieInfo);
-	// 		// console.log(component.movie);
-	
-	
-	// 		// console.log(component);
-	// 		// // trigger the click
-			
-	
-	// 		// console.log(div);
-	
-	// 		// //let movie = {id: 1, name: 'Batcat the cat bat', description: 'lol', price: 122, imageUrl: 'https://fashionjitsudotcom.files.wordpress.com/2017/10/screen-shot-2017-09-25-at-2-52-46-pm.png',year: 1999,added: 'datum',productCategory:[]};
-	// 		// 
-	// 		// testFixture.detectChanges();
-		 
-	// 		//expect(component.movieInfo.emit).toHaveBeenCalledWith({id: 1, name: 'Batcat the cat bat', description: 'lol', price: 122, imageUrl: 'https://fashionjitsudotcom.files.wordpress.com/2017/10/screen-shot-2017-09-25-at-2-52-46-pm.png',year: 1999,added: 'datum',productCategory:[]});
-	// 	 });
-
-	// });
-
 	@Component({
 		selector: `host-component`,
-		template: `<app-print-movie [movie]="{ id: 1, name: 'Batcat the cat bat', description: 'lol', price: 122,imageUrl: 'https://fashionjitsudotcom.files.wordpress.com/2017/10/screen-shot-2017-09-25-at-2-52-46-pm.png',year: 1999,added: 'datum',productCategory:[]}" (thisMovieInfo)="movieInfo($event)"></app-print-movie>`
-		//template: `<app-print-movie [movie]="theMovie"></app-print-movie>`
+		template: `<app-print-movie [movie]="{ id: 1, name: 'Batcat the cat bat', description: 'lol', price: 122,imageUrl: 'https://fashionjitsudotcom.files.wordpress.com/2017/10/screen-shot-2017-09-25-at-2-52-46-pm.png',year: 1999,added: 'datum',productCategory:[{categoryId: 1}]}" (thisMovieInfo)="movieInfo($event)"></app-print-movie>`
 	})
 	class TestHostComponent {
 		movie: IMovie;
@@ -83,10 +43,5 @@ describe('PrintMovieComponent', () => {
 		setInput(theMovie: IMovie) {
 			this.movie = theMovie;
 		}
-
-		// movieInfo(movie: IMovie){
-		// 	//console.log(movie);
-		// }
-
 	}
 });

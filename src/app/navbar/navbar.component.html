@@ -1,17 +1,8 @@
 <nav>
-	<!-- <form [formGroup]="searchForm" (ngSubmit)="movieSearch()"> -->
 	<div class="search">
 		<input type="text" #movieName placeholder="Find your favourite movie..." (keyup.enter)="movieSearch(movieName.value)">
 		<button (click)="movieSearch(movieName.value)">Search</button>
 	</div>
-	<!-- </form> -->
-	<!-- <form [formGroup]="categoryForm"> -->
-		<!-- <select formControlName="selectedCategory"> -->
-		<!-- <select [formControl]="selectedCategory" *ngChange="getCategory()">
-			<option selected>All</option>
-			<option *ngFor="let category of categories" >{{ category.name }}</option>
-		</select> -->
-	<!-- </form> -->
 	<select [formControl]="selectedCategory" (change)="categorySearch()">
 	   	<option>All</option>
 		<option *ngFor="let category of categories" value="{{ category.id }}">{{ category.name }}</option>

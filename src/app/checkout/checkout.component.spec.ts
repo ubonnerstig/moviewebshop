@@ -7,7 +7,6 @@ import { DataService } from '../services/data.service';
 import { MockDataService } from '../services/mock-data.service';
 import { CartService } from '../services/cart.service';
 import { ICartItem } from '../interfaces/ICartItem';
-import { IOrder } from '../interfaces/IOrder';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -38,6 +37,10 @@ describe('CheckoutComponent', () => {
 		localStorage.clear();
 	});
 
+	afterEach(() => {
+		localStorage.clear();
+	})
+
 	it('should create', () => {
 		expect(component).toBeTruthy();
 	});
@@ -56,21 +59,41 @@ describe('CheckoutComponent', () => {
 		component.cartToOrder = component.mapCart();
 
 		component.order = {
-				id: 5,
-				companyId: 8,
-				created: component.date,
-				createdBy: "hej",
-				paymentMethod: "Bitcoin",
-				totalPrice: component.cartContent.totalPrice,
-				status: 0,
-				orderRows: component.cartToOrder
+			id: 5,
+			companyId: 8,
+			created: component.date,
+			createdBy: "hej",
+			paymentMethod: "Bitcoin",
+			totalPrice: component.cartContent.totalPrice,
+			status: 0,
+			orderRows: component.cartToOrder
 		}
 		backend.postOrder(component.order);
 		expect(backend.orders.length).toBe(5);
+	});
+	
+	//Behövs dessa två eftersom de testast i service?
+	it('should change movie quantity', () => {
+		cartService.addToCart(backend.movies[1], 1);
+		expect(component.cartContent.cartItems[0].quantity).toBe(1);
+		let testCartItem:ICartItem = {
+			movie: backend.movies[1],
+			quantity: 3,
+			quantityPrice: (backend.movies[1].price * 3)
+		}
+		component.changeQuantity(testCartItem);
+		expect(component.cartContent.cartItems[0].quantity).toBe(3);
 	   });
 	   
-	   it('should place an order', () => {
-		//component.removeFromCart(component.cartContent[0]);
+	   it('should remove movie from cart', () => {
+		cartService.addToCart(backend.movies[1], 1);
+		expect(component.cartContent.totalQty).toBe(1);
+		let testCartItem:ICartItem = {
+			movie: backend.movies[1],
+			quantity: 1,
+			quantityPrice: (backend.movies[1].price * 1)
+		}
+		component.removeFromCart(testCartItem);
+		expect(component.cartContent.totalQty).toBe(0);
    	});
-
 });
