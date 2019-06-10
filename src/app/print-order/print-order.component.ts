@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IOrder } from '../interfaces/IOrder';
+import * as moment from 'moment';
+import { Constants } from '../interfaces/Constans';
 
 @Component({
   selector: 'app-print-order',
@@ -13,11 +15,13 @@ export class PrintOrderComponent implements OnInit {
 	status: string;
 	payment: string;
 	icon: string;
+	date: string;
 	constructor() { }
 
 	ngOnInit() {
 		this.setStatus(this.order.status);
 		this.setPayment(this.order.paymentMethod);
+		this.date = moment(this.order.created).format(new Constants().dateTimeFormat);
 	}
 
 	setStatus(numberStatus: number){

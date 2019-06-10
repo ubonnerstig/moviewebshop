@@ -7,8 +7,6 @@ import { IMovie } from '../interfaces/IMovie';
 describe('PrintMovieComponent', () => {
 	let testComponent: TestHostComponent;
 	let testFixture: ComponentFixture<TestHostComponent>;
-	//let component: PrintMovieComponent;
-	//let fixture: ComponentFixture<PrintMovieComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({

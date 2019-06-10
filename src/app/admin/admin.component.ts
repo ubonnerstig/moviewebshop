@@ -22,14 +22,11 @@ export class AdminComponent implements OnInit {
 		});
 	}
 	
-	removeOrder(order){
-		console.log(order.id);
-
+	removeOrder(order: IOrder){
 		this.http.deleteOrder(order.id).subscribe((response)=>{
-				this.updateOrders();
-			},(error)=>{
-				alert("Something went wrong, try again later");
-			});
-
+			this.updateOrders();
+		},(error)=>{
+			alert("Something went wrong, try again later");
+		});
 	}
 }

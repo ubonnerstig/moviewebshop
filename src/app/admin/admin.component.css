@@ -1,6 +1,12 @@
-* {
-	border: 1px solid red;
-}
-h2 {
+.small {
 	flex: 0 0 10%;
+}
+
+.big {
+	flex: 0 0 20%;
+}
+
+.button {
+	flex: 0 0 5%;
+	max-width: 2rem;
 }
