@@ -1,25 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { ICart } from '../interfaces/ICart';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IOrder } from '../interfaces/IOrder';
 import { DataService } from '../services/data.service';
-import { Observable } from 'rxjs';
 import { IOrderItem } from '../interfaces/IOrderItem';
-import { IMovie } from '../interfaces/IMovie';
 import { ICartItem } from '../interfaces/ICartItem';
-
 import * as moment from 'moment';
-import { Constants } from '../interfaces/Constans';
 import { Router } from '@angular/router';
 import { OrderCompleteService } from '../services/order-complete.service';
-import { IUser } from '../interfaces/IUser';
-import { HttpHeaders } from '@angular/common/http';
 
 @Component({
-  selector: 'app-checkout',
-  templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.css']
+	selector: 'app-checkout',
+	templateUrl: './checkout.component.html',
+	styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
 	cartContent: ICart;
@@ -42,14 +36,14 @@ export class CheckoutComponent implements OnInit {
 		paymentMethod:['', Validators.required]
 	});
 
-	constructor(private cartService: CartService, private fb: FormBuilder, private http: DataService, private router: Router, private completeOrder: OrderCompleteService) { }
+	constructor(private cartService: CartService, private fb: FormBuilder, private http: DataService, private router: Router, private completeOrder: OrderCompleteService){ }
 
-	ngOnInit() {
-		this.cartContent = this.cartService.getCart();
+	ngOnInit(){
 		this.cartService.thisMovie$.subscribe(addedMovie => {
 			this.cartContent = addedMovie;
 			this.checkContentLength(this.cartContent.cartItems.length);
 		});
+		this.cartContent = this.cartService.getCart();
 		this.checkContentLength(this.cartContent.cartItems.length);
 
 		this.cartToOrder = this.mapCart();

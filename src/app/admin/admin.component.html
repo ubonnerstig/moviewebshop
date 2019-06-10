@@ -1,10 +1,11 @@
 <div class="flex">
-	<h2>Order #</h2>
-	<h2>Status</h2>
-	<h2>Date</h2>
-	<h2>Total</h2>
-	<h2>Payment</h2>
-	<h2>User</h2>
+	<h2 class="small">Order #</h2>
+	<h2 class="small">Status</h2>
+	<h2 class="big">Date</h2>
+	<h2 class="small">Total</h2>
+	<h2 class="big">Payment</h2>
+	<h2 class="big">User</h2>
+	<span class="button"></span>
 </div>
 
 <app-print-order *ngFor="let order of orders" [order]="order" (removeThisOrder)="removeOrder($event)"></app-print-order>

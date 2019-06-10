@@ -6,27 +6,27 @@ import { DataService } from '../services/data.service';
 import { MockDataService } from '../services/mock-data.service';
 
 describe('AdminComponent', () => {
-  let component: AdminComponent;
-  let fixture: ComponentFixture<AdminComponent>;
+	let component: AdminComponent;
+	let fixture: ComponentFixture<AdminComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ AdminComponent, PrintOrderComponent ]
-	})
-	.overrideComponent(AdminComponent, {set: { providers: 
-		[
-			{ provide: DataService, useClass: MockDataService}
-		]}})
-    .compileComponents();
-  }));
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+		declarations: [ AdminComponent, PrintOrderComponent ]
+		})
+		.overrideComponent(AdminComponent, {set: { providers: 
+			[
+				{ provide: DataService, useClass: MockDataService}
+			]}})
+		.compileComponents();
+	}));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(AdminComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(() => {
+		fixture = TestBed.createComponent(AdminComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+	it('should create', () => {
+		expect(component).toBeTruthy();
+	});
 });

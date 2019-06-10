@@ -20,15 +20,12 @@ export class MovieDetailsComponent implements OnInit {
 	}
 
 	closeModal(){
-		console.log(this.modalMovie);
 		this.closeThisModal.emit();
 	}
 
 	addToCart(inputQuantity: number){
 		let addQuantity = +inputQuantity
-
 		this.cartService.addToCart(this.modalMovie, addQuantity);
-
 		this.closeModal();
 	}
 }
