@@ -1,13 +1,22 @@
 <nav>
-	<div class="search">
-		<input type="text" #movieName placeholder="Find your favourite movie..." (keyup.enter)="movieSearch(movieName.value)">
-		<button (click)="movieSearch(movieName.value)">Search</button>
+	<!-- <div *ngIf="miniLogo" class="mini_logo_container"> -->
+	<!-- <div [class.mini_logo_hide]="!miniLogo" [class.mini_logo_show]="miniLogo"> -->
+	<div class="mini_logo_container" [class.mini_logo_show]="miniLogo">
+		<a routerLink="" routerLinkActive="active">
+			<h2 class="mini_logo" id="mini_logo">movie shop</h2>
+		</a>
 	</div>
-	<select [formControl]="selectedCategory" (change)="categorySearch()">
-	   	<option>All</option>
-		<option *ngFor="let category of categories" value="{{ category.id }}">{{ category.name }}</option>
-	</select>
-	<button class="cart" (mouseover)="toggleCart(true)" (mouseleave)="toggleCart(false)"><i class="fas fa-shopping-cart"></i></button>
-	<span *ngIf="cartQtyVisibility" class="number_of_cart_items" (mouseover)="toggleCart(true)" (mouseleave)="toggleCart(false)">{{ cartQty }}</span>
-	<app-cart (mouseover)="toggleCart(true)" (mouseleave)="toggleCart(false)" class="cart_wrap" [class.cart_visible]="cartVisibility" [class.cart_invisible]="!cartVisibility" [cartExpanded]="cartVisibility" (closeThisCart)="toggleCart($event)"></app-cart>
+	<div *ngIf="!hideShowNav" class="home_controls" id="homeControls">
+		<div class="search">
+			<input type="text" #movieName placeholder="Find your favourite movie..." (keyup.enter)="movieSearch(movieName.value)">
+			<button (click)="movieSearch(movieName.value)">Search</button>
+		</div>
+		<select [formControl]="selectedCategory" (change)="categorySearch()">
+			<option>All</option>
+			<option *ngFor="let category of categories" value="{{ category.id }}">{{ category.name }}</option>
+		</select>
+		<button class="cart" (mouseover)="toggleCart(true)" (mouseleave)="toggleCart(false)"><i class="fas fa-shopping-cart"></i></button>
+		<span *ngIf="cartQtyVisibility" class="number_of_cart_items" (mouseover)="toggleCart(true)" (mouseleave)="toggleCart(false)">{{ cartQty }}</span>
+		<app-cart (mouseover)="toggleCart(true)" (mouseleave)="toggleCart(false)" class="cart_wrap" [class.cart_visible]="cartVisibility" [class.cart_invisible]="!cartVisibility" [cartExpanded]="cartVisibility" (closeThisCart)="toggleCart($event)"></app-cart>
+	</div>
 </nav>
