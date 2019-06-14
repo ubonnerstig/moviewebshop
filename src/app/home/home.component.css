@@ -1,9 +1,33 @@
 app-print-movie.col {
-	flex: 0 0 25%;
-	max-width: 23%;
-	margin: 3rem 1%;
+	max-width: 46%;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+            flex: 0 0 50%;
+        margin: 1rem 2%;
 }
 
 app-movie-details.display_modal {
 	display: none;
+}
+
+@media screen and (min-width: 768px) {
+	app-print-movie.col {
+		flex: 0 0 33%;
+		-webkit-box-flex: 0;
+			-ms-flex: 0 0 33%;
+				flex: 0 0 33%;
+		max-width: 30%;
+		margin: 2rem 1%;
+    }
+}
+
+@media screen and (min-width: 992px) {  
+	app-print-movie.col {
+		flex: 0 0 25%;
+		-webkit-box-flex: 0;
+			-ms-flex: 0 0 25%;
+				flex: 0 0 25%;
+		max-width: 23%;
+		margin: 3rem 1%;
+    }
 }

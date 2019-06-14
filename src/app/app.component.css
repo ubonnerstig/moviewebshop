@@ -5,12 +5,17 @@ header {
 h1 {
 	padding-bottom: 2rem;
 	text-align: center;
-	/* font-family: 'Plaster', cursive; */
 	font-family: 'Pacifico', cursive;
-	font-size: 4rem;
-	color: #ffffff;
-	margin:0;
-	text-shadow: 0 0 10px #ffffff, 0 0 20px #E64980, 0 0 30px #E64980, 0 0 40px #F26B9C, 0 0 50px #F26B9C, 0 0 60px #FAA2C1, 0 0 70px #FAA2C1;
+	font-size: 3rem;
+	background: linear-gradient(to right, #ff649a 30%, #fbc6a3 60%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	margin: 0;
+}
+
+.fas.fa-film {
+	text-shadow: none;
+	color: #E64980;
 }
 
 app-navbar {
@@ -25,11 +30,29 @@ app-navbar {
 }
 
 main {
-	max-width: 60rem;
+	max-width: 414px;
 	margin: 0 auto;
 	margin-bottom: 5rem;
 }
 
 .main_margin {
 	margin-top:4rem;
+}
+
+@media screen and (min-width: 768px) {
+	main {
+		padding: 0 1.5rem;
+		max-width: 768px;
+	}
+
+	h1 {
+		font-size: 4rem;
+	}
+}
+
+@media screen and (min-width: 992px) {  
+	main {
+		max-width: 60rem;
+		padding: 0;
+	}
 }

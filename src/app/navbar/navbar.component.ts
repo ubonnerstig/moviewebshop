@@ -39,13 +39,8 @@ export class NavbarComponent implements OnInit {
 		this.checkCartQty(this.cartQty);
 
 		this.href = this.router.url;
-		// this.router.events.subscribe((val) => {
-		// 	console.log(val);
-		// });
 		this.router.events.forEach((event) => {
 			if(event instanceof NavigationEnd) {
-				console.log(event.url);
-				// console.log(event.url.replace("/",""));
 				if(event.url === "/"){
 					this.hideShowNav = false;
 				}else{
@@ -67,6 +62,10 @@ export class NavbarComponent implements OnInit {
 		this.cartVisibility = visibility;
 	}
 
+	toggleCartMobile(){
+		this.cartVisibility = !this.cartVisibility;
+	}
+
 	checkCartQty(quantity: number){
 		this.cartQty = quantity;
 		if(quantity > 0){
@@ -80,22 +79,14 @@ export class NavbarComponent implements OnInit {
 		this.searchService.getCategory(this.category.value);
 	}
 
-	@HostListener('window:scroll', ['$event']) onScrollEvent($event){
-		// console.log($event.path[1].scrollY);
-		if ($event.path[1].scrollY >= 170){
+	@HostListener('window:scroll', ['$event']) onScrollEvent(event){
+		if (event.target['scrollingElement'].scrollTop  >= 170){
 			this.miniLogo = true;
 			if(!this.hideShowNav){
-				document.getElementById("homeControls").style.flex = "80%";
+				document.getElementById("homeControls").style.flex = "75%";
 			}
-			// console.log(document.getElementById("mini_logo").style);
-			// console.log(document.getElementsByClassName("home_controls")[0].clientWidth);
-			// document.getElementsByClassName("home_controls")[0].clientWidth
-			// console.log(document.getElementById("homeControls").style);
-
-			// console.log($event.path[1].scrollY - 170);
-		}else if($event.path[1].scrollY <= 170) {
+		}else if(event.target['scrollingElement'].scrollTop <= 170) {
 			this.miniLogo = false;
-			// console.log(document.getElementById("mini_logo").style.width);
 		}
 	}
 }

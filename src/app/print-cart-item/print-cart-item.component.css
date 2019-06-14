@@ -55,13 +55,6 @@ div.info_footer {
 	text-align: right;
 	align-self: center;
 }
-/* div.info_footer > button {
-	height: 100%;
-}
-
-div.info_footer > button:hover {
-	text-decoration: underline;
-} */
 
 input, button {
 	text-align: center;
@@ -81,3 +74,4 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none; 
   margin: 0; 
 }
+

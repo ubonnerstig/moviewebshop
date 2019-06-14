@@ -12,7 +12,7 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 })
 export class AppComponent {
 	bodyScroll: boolean;
-	fixedNavBar: boolean;
+	fixedNavBar: boolean = false;
 	hideShowNav: boolean;
 	href: string;
 
@@ -24,37 +24,18 @@ export class AppComponent {
 	}
 
 	ngOnInit() {
-		// this.href = this.router.url;
-		// console.log(this.href);	
-		// console.log(this.router);
-		// this.router.events.subscribe((val) => {
-		// 	// console.log(val instanceof NavigationEnd) 
-		// 	console.log(val);
-		// 	// console.log(Event:NavigationEnd.url);
-		// });
-		// this.router.events.forEach((event) => {
-		// 	if(event instanceof NavigationEnd) {
-		// 		console.log(event.url);
-		// 		// console.log(event.url.replace("/",""));
-		// 		if(event.url === "/"){
-		// 			this.hideShowNav = false;
-		// 		}else{
-		// 			this.hideShowNav = true;
-		// 		}
-		// 	}
-		// });
 	}
 
 	fixUnfixNavbar(navbarBoolean: boolean){
 		this.fixedNavBar = navbarBoolean;
 	}
 
-	@HostListener('window:scroll', ['$event']) onScrollEvent($event){
-		if ($event.path[1].scrollY >= 170){
-			this.fixUnfixNavbar(true);
-		} else if($event.path[1].scrollY <= 170) {
-			this.fixUnfixNavbar(false);
-		}
+	@HostListener('window:scroll', ['$event']) 
+		onScrollEvent(event){
+			if (event.target['scrollingElement'].scrollTop >= 170){
+				this.fixUnfixNavbar(true);
+			} else if(event.target['scrollingElement'].scrollTop <= 170) {
+				this.fixUnfixNavbar(false);
+			}
 	}
-
 }

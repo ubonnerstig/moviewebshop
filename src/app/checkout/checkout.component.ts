@@ -7,7 +7,7 @@ import { DataService } from '../services/data.service';
 import { IOrderItem } from '../interfaces/IOrderItem';
 import { ICartItem } from '../interfaces/ICartItem';
 import * as moment from 'moment';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { OrderCompleteService } from '../services/order-complete.service';
 
 @Component({
@@ -47,6 +47,13 @@ export class CheckoutComponent implements OnInit {
 		this.checkContentLength(this.cartContent.cartItems.length);
 
 		this.cartToOrder = this.mapCart();
+
+		this.router.events.subscribe((evt) => {
+			if (!(evt instanceof NavigationEnd)) {
+				return;
+			}
+			window.scrollTo(0, 0)
+		});
 	}
 
 	mapCart(): IOrderItem[]{

@@ -11,22 +11,24 @@
 .modal_content {
 	top: 0;
 	border-radius: .5rem;
-	width: 40rem;
+	width: 100vw;
+	max-height: 90vh;
 	padding: 1rem;
 	background-color: #ffffff;
 	position: fixed;
-	margin: 20% 50%;
-	left: -20rem;
+	margin-top: 10%;
+
 	z-index: 500;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-start;
 	box-sizing: border-box;
+	overflow: scroll;
 }
 
 .modal_img_container {
-	flex: 0 0 30%;
-	max-width: 30%;
+	flex: 0 0 100%;
+	max-width: 100%;
 }
 
 .modal_img_container > img {
@@ -35,14 +37,12 @@
 }
 
 .col {
-	flex: 0 0 70%;
-	max-width: 65%;
+	flex: 0 0 100%;
+	max-width: 100%;
 	margin: 0 1%;;
 }
 
 h3 {
-	/* flex: 0 0 70%;
-	max-width: 68%;*/
 	margin: 0; 
 }
 
@@ -57,18 +57,12 @@ h3 {
 	right: 20px;
 }
 
-/* form {
-	text-align: left;
-	padding: 2rem; 
-} */
-
 .col > input {
 	width: 3rem;
 	height: 2rem;
 	font-size: 1rem;
 	border-radius: 2rem;
 	border: 1px solid gray;
-	/* padding-left: 1rem; */
 	text-align: center;
 	margin-right: .5rem;
 }
@@ -82,4 +76,43 @@ h3 {
 	color: #ffffff;
 	border: none;
 	margin-right: .2rem;
+}
+
+@media screen and (min-width: 768px) {
+	.modal_content {
+		top: 0;
+		border-radius: .5rem;
+		width: 40rem;
+		padding: 1rem;
+		background-color: #ffffff;
+		position: fixed;
+		margin: 20% 50%;
+		left: -20rem;
+		z-index: 500;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		box-sizing: border-box;
+	}
+
+	.modal_img_container {
+		flex: 0 0 30%;
+		max-width: 30%;
+	}
+	
+	.modal_img_container > img {
+		width: 100%;
+		height: auto;
+	}
+	
+	.col {
+		flex: 0 0 70%;
+		max-width: 65%;
+		margin: 0 1%;;
+	}
+	
+}
+
+@media screen and (min-width: 992px) {  
+
 }

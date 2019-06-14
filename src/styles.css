@@ -5,14 +5,12 @@
 
 * {
 	font-family: 'Raleway', sans-serif;
-	/* border: 1px solid red; */
 	box-sizing: border-box;
 	outline: none;
 }
 
 body {
 	margin: 0;
-	/* background-color: #27272b; */
 }
 
 .header_link{
@@ -33,4 +31,8 @@ body {
 .col_full {
 	flex: 0 0 100%;
 	max-width: 100%;
+}
+
+button {
+	background-color: transparent;
 }

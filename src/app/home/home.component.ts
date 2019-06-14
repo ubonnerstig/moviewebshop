@@ -3,6 +3,7 @@ import { IMovie } from '../interfaces/IMovie';
 import { DataService } from '../services/data.service';
 import { BodyScrollService } from '../services/body-scroll.service';
 import { SearchService } from '../services/search.service';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
 	selector: 'app-home',
@@ -19,7 +20,7 @@ export class HomeComponent implements OnInit {
 
 	noMovies: boolean;
 
-	constructor(private dataService: DataService, private scrollService: BodyScrollService, private searchService: SearchService) {
+	constructor(private dataService: DataService, private scrollService: BodyScrollService, private searchService: SearchService, private router: Router) {
 		this.handleSearch = this.handleSearch.bind(this);
 		this.handleCategory = this.handleCategory.bind(this);
 	}
@@ -31,6 +32,13 @@ export class HomeComponent implements OnInit {
 		});
 		this.searchService.chosenCategory$.subscribe(this.handleCategory);
 		this.searchService.searchedString$.subscribe(this.handleSearch);
+
+		this.router.events.subscribe((evt) => {
+			if (!(evt instanceof NavigationEnd)) {
+				return;
+			}
+			window.scrollTo(0, 0)
+		});
 	}
 
 	handleSearch(movieSearch: string){	
