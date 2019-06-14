@@ -1,0 +1,68 @@
+div.flex {
+	padding: 1rem 0;
+	border-bottom: 1px solid gray;
+}
+
+.img_container {
+	position: relative;
+	height: 3rem;
+	width: 3rem;
+	flex: 0 0 10%;
+	max-width: 3rem;
+}
+
+.img_container img {
+	width: 100%;
+	height: 3rem;
+	object-fit: cover;
+	object-position: 0  0;
+}
+
+.movie_info {
+	flex: 0 0 70%;
+
+	margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+h3, p {
+	margin: 0;
+	text-align: left;
+	padding-left: 1rem;
+}
+
+h3 {
+	flex: 0 0 100%;
+}
+
+p {
+	flex: 0 0 100%;
+}
+
+.change_quantity {
+	flex: 0 0 20%;
+	text-align: right;
+	align-self: center;
+}
+
+input, button {
+	text-align: center;
+	font-size: 1rem;
+	border: none;
+	background-color: transparent;
+	width: 1.2rem;
+	margin: 0;
+	padding: 0;
+}
+
+input {
+	font-size: 1.2rem;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}

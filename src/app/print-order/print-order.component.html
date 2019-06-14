@@ -1,0 +1,9 @@
+<div class="order_wrap flex" *ngIf="order">
+	<p class="small">#{{ order.id }}</p>
+	<p class="small">{{ status }}</p>
+	<p class="big">{{ date }}</p>
+	<p class="small">{{ order.totalPrice }} SEK</p>
+	<p class="big"><i class="{{ icon }}"></i> {{ payment }}</p>
+	<p class="big">{{ order.createdBy }}</p>
+	<button (click)="removeOrder()"><i class="fas fa-trash-alt"></i></button>
+</div>

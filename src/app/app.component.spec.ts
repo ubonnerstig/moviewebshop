@@ -1,15 +1,27 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { CartComponent } from './cart/cart.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PrintCartItemComponent } from './print-cart-item/print-cart-item.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+		RouterTestingModule,
+		FormsModule,
+		ReactiveFormsModule,
+		HttpClientModule,
+		RouterTestingModule
       ],
       declarations: [
-        AppComponent
+		AppComponent,
+		NavbarComponent,
+		CartComponent,
+		PrintCartItemComponent
       ],
     }).compileComponents();
   }));
@@ -20,16 +32,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'moviewebshop'`, () => {
+  it('bodyScroll should be falsy on load', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('moviewebshop');
-  });
+	expect(app.bodyScroll).toBeFalsy();
 
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to moviewebshop!');
   });
 });

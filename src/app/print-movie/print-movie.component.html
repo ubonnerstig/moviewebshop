@@ -1,3 +1,12 @@
-<p>
-  print-movie works!
-</p>
+<div class="img_container" (click)='getMovieInfo()'>
+
+	<img src='{{movie.imageUrl}}' />
+
+	<div class="title_container">
+		<p class="title">
+			{{ movie.name }}
+		</p>
+		<button (click)="addToCart($event)">Quick add</button>
+	</div>
+
+</div>

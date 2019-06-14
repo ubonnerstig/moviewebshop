@@ -1,0 +1,39 @@
+div.order_wrap {
+	border-bottom: 1px solid gray;
+}
+
+.small {
+	flex: 0 0 10%;
+}
+
+.big {
+	flex: 0 0 20%;
+}
+
+button {
+	flex: 0 0 5%;
+	max-width: 2rem;
+	background-color: transparent;
+	border: none;
+}
+
+button:hover{
+	transition-duration: 0.5s;
+	color: #F285B8;
+}
+
+.fab, .fas {
+	font-size: 1.2rem;
+}
+
+.fa-bitcoin {
+	color: #fdd03b;
+}
+
+.fa-paypal {
+	color: #c5f6fa;
+}
+
+.fa-ice-cream {
+	color: #F285B8;
+}

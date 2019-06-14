@@ -1,0 +1,19 @@
+<div class="modal_background" (click)="closeModal()"></div>
+<div *ngIf="modalMovie" class="modal_content">
+	<div class="close" (click)="closeModal()"><i class="fas fa-times"></i></div>
+	<div class="modal_img_container">
+		<img src='{{ modalMovie.imageUrl }}' />
+	</div>
+	<div class="col">
+		<h3>
+			{{modalMovie.name}} | {{modalMovie.year}}
+		</h3>
+		<p>
+			{{modalMovie.description}}
+		</p>
+
+		<input type="number" #movieQuantity (keyUp.enter)="addToCart(movieQuantity.value);movieQuantity.value=1" value="1">
+		<button (click)="addToCart(movieQuantity.value);movieQuantity.value=1">Add to cart</button>
+	</div>
+
+</div>

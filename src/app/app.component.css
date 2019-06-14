@@ -1,0 +1,58 @@
+header {
+	margin-top: 2rem; 
+}
+
+h1 {
+	padding-bottom: 2rem;
+	text-align: center;
+	font-family: 'Pacifico', cursive;
+	font-size: 3rem;
+	background: linear-gradient(to right, #ff649a 30%, #fbc6a3 60%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	margin: 0;
+}
+
+.fas.fa-film {
+	text-shadow: none;
+	color: #E64980;
+}
+
+app-navbar {
+	background-color: rgba(255, 255, 255, 0.9);
+}
+
+.fixed_navigation {
+	position: fixed;
+    top: 0px;
+	z-index: 300;
+	width: 100%;
+}
+
+main {
+	max-width: 414px;
+	margin: 0 auto;
+	margin-bottom: 5rem;
+}
+
+.main_margin {
+	margin-top:4rem;
+}
+
+@media screen and (min-width: 768px) {
+	main {
+		padding: 0 1.5rem;
+		max-width: 768px;
+	}
+
+	h1 {
+		font-size: 4rem;
+	}
+}
+
+@media screen and (min-width: 992px) {  
+	main {
+		max-width: 60rem;
+		padding: 0;
+	}
+}

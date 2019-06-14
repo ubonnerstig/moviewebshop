@@ -1,0 +1,26 @@
+<nav>
+	<!-- <div *ngIf="miniLogo" class="mini_logo_container"> -->
+	<!-- <div [class.mini_logo_hide]="!miniLogo" [class.mini_logo_show]="miniLogo"> -->
+	<div class="mini_logo_container" [class.mini_logo_show]="miniLogo">
+		<a routerLink="" routerLinkActive="active">
+			<h2 class="mini_logo_mobile" id="mini_logo"><i class="fas fa-film"></i></h2>
+			<h2 class="mini_logo" id="mini_logo"><i class="fas fa-film"></i>movie shop</h2>
+		</a>
+	</div>
+	<div *ngIf="!hideShowNav" class="home_controls" id="homeControls">
+		<div class="search">
+			<input type="text" #movieName placeholder="Find a movie..." (keyup.enter)="movieSearch(movieName.value)">
+			<!-- <button (click)="movieSearch(movieName.value)">Search</button> -->
+			<span class="search_button">
+				<button (click)="movieSearch(movieName.value)"><i class="fas fa-search"></i></button>
+			</span>
+		</div>
+		<select [formControl]="selectedCategory" (change)="categorySearch()">
+			<option>All</option>
+			<option *ngFor="let category of categories" value="{{ category.id }}">{{ category.name }}</option>
+		</select>
+		<button class="cart" (mouseover)="toggleCart(true)" (mouseleave)="toggleCart(false)" (click)="toggleCartMobile()"><i class="fas fa-shopping-cart"></i></button>
+		<span *ngIf="cartQtyVisibility" class="number_of_cart_items" (mouseover)="toggleCart(true)" (mouseleave)="toggleCart(false)">{{ cartQty }}</span>
+		<app-cart (mouseover)="toggleCart(true)" (mouseleave)="toggleCart(false)" class="cart_wrap" [class.cart_visible]="cartVisibility" [class.cart_invisible]="!cartVisibility" [cartExpanded]="cartVisibility" (closeThisCart)="toggleCart($event)"></app-cart>
+	</div>
+</nav>
