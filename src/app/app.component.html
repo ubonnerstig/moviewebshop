@@ -1,10 +1,12 @@
 <header>
-	<a class="header_link" routerLink="" routerLinkActive="active"> 
-		<h1>
-			Movie Shop
-		</h1>
-	</a>
-	<app-navbar *ngIf="!hideShowNav" [class.fixed_navigation]="fixedNavBar" (scroll)="onScroll($event)"></app-navbar>	
+	<!-- <div class="logo"> -->
+		<a class="header_link" routerLink="" routerLinkActive="active"> 
+			<h1>
+				Movie Shop
+			</h1>	
+		</a>
+	<!-- </div> -->
+	<app-navbar [class.fixed_navigation]="fixedNavBar" (scroll)="onScroll($event)"></app-navbar>	
 </header>
 
 <main [class.main_margin]="fixedNavBar">

@@ -1,12 +1,10 @@
 div.col {
-	flex: 0 0 50%;
-	max-width: 50%;
+	flex: 0 0 100%;
+	max-width: 100%;
 	word-wrap: break-word;
 }
 
 div.col_full {
-	/* flex: 0 0 100%;
-	max-width: 100%; */
 	word-wrap: break-word;
 	text-align: center;
 }
@@ -29,6 +27,10 @@ div.full h3 {
 .fa-dizzy {
 	font-size: 8rem;
 	color: #fda1c1;
+}
+
+form {
+	text-align: center;
 }
 
 input, select {
@@ -64,12 +66,28 @@ form > input:focus {
 }
 
 button {
-	width: 24%;
+	width: 10rem;
 	height: 3rem;
 	font-size: 1rem;
 	border-radius: 2rem;
-	background-color: #ebb502;
+	background-image: linear-gradient(to right, #ff649a, #fbc6a3);
 	color: #ffffff;
 	border: none;
 	margin-right: .2rem;
+}
+
+@media screen and (min-width: 768px) {
+	div.col {
+		flex: 0 0 50%;
+		max-width: 50%;
+		word-wrap: break-word;
+	}
+
+	form {
+		text-align: left;
+	}
+}
+
+@media screen and (min-width: 992px) {  
+
 }
